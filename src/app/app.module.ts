@@ -1,20 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
+import { routes } from './router';
 import { AppComponent } from './app.component';
-import { HeroesComponent } from './heroes/heroes.component';
+import { AppStoreModule } from './store/store.module';
+import { AboutComponent } from './about.component';
+import { RouterModule } from '@angular/router';
+import { externalModules } from './build-specific';
+import { declarations } from './core';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeroesComponent
-  ],
+  declarations: [AppComponent, AboutComponent, declarations],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    HttpClientModule,
+    RouterModule.forRoot(routes),
+    AppStoreModule,
+    externalModules
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
