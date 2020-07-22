@@ -1,0 +1,4 @@
+{
+  "route": "/heroes",
+  "serve": "/heroes"
+}
