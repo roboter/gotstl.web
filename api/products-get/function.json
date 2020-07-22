@@ -5,8 +5,7 @@
       "type": "httpTrigger",
       "direction": "in",
       "name": "req",
-      "route": "products",
-      "methods": ["post"]
+      "methods": ["get"]
     },
     {
       "type": "http",
