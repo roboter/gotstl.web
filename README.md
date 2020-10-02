@@ -1,4 +1,15 @@
+# Gotstl.com
+
+hosted on azure free static pages
+ - Angular frameworks
+ - azure functions
+
+Neeed to run for local development
+```
+npm -prefix=api start
+```
 # Static Web App
+
 
 This project was created to help represent a fundamental app written with Angular. The shopping theme is used throughout the app.
 
