@@ -47268,7 +47268,6 @@ var gProcessor = null;
  */
 function init(viewer, options) {
   var versionText = 'UMD OpenJSCAD.org Version (MODIFIED) ' + version;
-  console.log('umd init', versionText, options);
 
   // Show all exceptions to the user: // WARNING !! this is not practical at dev time
   AlertUserOfUncaughtExceptions();
