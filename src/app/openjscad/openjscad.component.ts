@@ -9,7 +9,6 @@ import * as gProcessor from '@jscad/web';
 export class OpenjscadComponent implements OnInit {
   public gProcessor = null;
   constructor() {}
-  windows: any = window;
   ngOnInit(): void {
     const viewerDiv = document.getElementById('viewerContext');
     viewerDiv.setAttribute('design-url', 'assets/examples/echo.jscad');
