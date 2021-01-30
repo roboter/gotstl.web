@@ -1,3 +1,4 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   Component,
   Input,
@@ -25,12 +26,25 @@ export class ProductDetailComponent implements OnChanges {
   addMode = false;
   editingProduct: Product;
   public gProcessor = null;
+
+  constructor(private http: HttpClient) {}
+
   ngOnChanges(changes: SimpleChanges) {
     if (this.product && this.product.id) {
       this.editingProduct = { ...this.product };
       this.addMode = false;
       const viewerDiv = document.getElementById('viewerContext');
+      const design = this.editingProduct.file;
+      const headers = new HttpHeaders().set(
+        'Content-Type',
+        'text/plain; charset=utf-8',
+      );
+      this.http
+        .get(design, { headers, responseType: 'text' })
+        .subscribe((res: string) => (this.editingProduct.code = res));
+
       viewerDiv.setAttribute('design-url', this.editingProduct.file);
+
       this.gProcessor = new gProcessor(viewerDiv, {
         viewerwidth: '100%',
         viewerheight: '100%',
@@ -54,6 +68,7 @@ export class ProductDetailComponent implements OnChanges {
         quantity: 1,
         image: '',
         file: '',
+        code: 'test',
       };
       this.addMode = true;
     }

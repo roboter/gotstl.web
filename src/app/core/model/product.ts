@@ -5,4 +5,5 @@ export class Product {
   quantity: number;
   image: string;
   file: string;
+  code: string;
 }
