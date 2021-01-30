@@ -13,10 +13,10 @@
             </div> 
             <app-card-content [name]="product.name" [description]="product.description"></app-card-content>
             <footer class="card-footer">
-                <app-button-footer class="card-footer-item" [className]="'delete-item'" [iconClasses]="'fas fa-trash'"
-                    (clicked)="deleteProduct($event)" label="Delete" [item]="product"></app-button-footer>
+                <!-- <app-button-footer class="card-footer-item" [className]="'delete-item'" [iconClasses]="'fas fa-trash'"
+                    (clicked)="deleteProduct($event)" label="Delete" [item]="product"></app-button-footer> -->
                 <app-button-footer class="card-footer-item" [className]="'edit-item'" [iconClasses]="'fas fa-edit'"
-                    (clicked)="selectProduct($event)" label="Edit" [item]="product"></app-button-footer>
+                    (clicked)="selectProduct($event)" label="View" [item]="product"></app-button-footer>
             </footer>
 
         </div>

@@ -12,7 +12,7 @@ export class OpenjscadComponent implements OnInit {
   windows: any = window;
   ngOnInit(): void {
     const viewerDiv = document.getElementById('viewerContext');
-    viewerDiv.setAttribute('design-url', 'assets/examples/logo.jscad');
+    viewerDiv.setAttribute('design-url', 'assets/examples/echo.jscad');
     this.gProcessor = new gProcessor(viewerDiv, {
       viewerwidth: '100%',
       viewerheight: '100%',
