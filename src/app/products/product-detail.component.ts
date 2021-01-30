@@ -23,9 +23,7 @@ import { Product } from '../core';
       <div class="card-content">
         <div class="content">
           <div class="field" *ngIf="editingProduct.id">
-            <label class="label" for="id">
-              id
-            </label>
+            <label class="label" for="id"> id </label>
             <input
               name="id"
               class="input"
@@ -36,9 +34,7 @@ import { Product } from '../core';
             />
           </div>
           <div class="field">
-            <label class="label" for="name">
-              name
-            </label>
+            <label class="label" for="name"> name </label>
             <input
               name="name"
               class="input"
@@ -48,9 +44,7 @@ import { Product } from '../core';
             />
           </div>
           <div class="field">
-            <label class="label" for="description">
-              description
-            </label>
+            <label class="label" for="description"> description </label>
             <input
               name="description"
               class="input"
@@ -60,9 +54,7 @@ import { Product } from '../core';
             />
           </div>
           <div class="field">
-            <label class="label" for="quantity">
-              quantity
-            </label>
+            <label class="label" for="quantity"> quantity </label>
             <input
               name="quantity"
               class="input"
@@ -115,6 +107,8 @@ export class ProductDetailComponent implements OnChanges {
         name: '',
         description: '',
         quantity: 1,
+        image: '',
+        file: '',
       };
       this.addMode = true;
     }

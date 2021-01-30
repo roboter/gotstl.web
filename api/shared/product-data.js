@@ -2,9 +2,11 @@ const data = {
   products: [
     {
       id: 10,
-      name: 'Strawberries',
+      name: 'logo',
       description: '16oz package of fresh organic strawberries',
       quantity: '1',
+      file: 'logo.jscad',
+      image: 'assets/examples/logo.png',
     },
     {
       id: 20,

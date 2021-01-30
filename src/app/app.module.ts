@@ -17,8 +17,9 @@ import { declarations } from './core';
     HttpClientModule,
     RouterModule.forRoot(routes),
     AppStoreModule,
-    externalModules
+    externalModules,
+
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

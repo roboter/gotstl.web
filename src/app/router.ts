@@ -2,8 +2,14 @@ import { Routes } from '@angular/router';
 import { AboutComponent } from './about.component';
 import { NotFoundComponent } from './core';
 
+ 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'products' },
+  {
+    path: 'openjscad',
+    loadChildren: () =>
+      import('./openjscad/openjscad.module').then((m) => m.OpenjscadModule),
+  },
   {
     path: 'products',
     loadChildren: () =>

@@ -8,23 +8,7 @@ Neeed to run for local development
 ```
 npm -prefix=api start
 ```
-# Static Web App
 
-
-This project was created to help represent a fundamental app written with Angular. The shopping theme is used throughout the app.
-
-## Getting Started
-
-1. Create a repository from this template repository <https://github.com/MicrosoftDocs/mslearn-staticwebapp/generate>
-
-1. Enter the name of your new repository as _my-static-web-app_
-
-1. Clone your new repository
-
-   ```bash
-   git clone https://github.com/your-github-organization/my-static-web-app
-   cd my-static-web-app/angular-app
-   ```
 
 1. Install the npm packages
 
@@ -32,7 +16,7 @@ This project was created to help represent a fundamental app written with Angula
    npm install
    ```
 
-1. Run the app
+2. Run the app
 
    ```bash
    npm start
