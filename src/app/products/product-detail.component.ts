@@ -8,8 +8,7 @@ import {
   SimpleChanges,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import * as gProcessor from '@jscad/web';
-
+import * as gProcessor from '@jwc/jscad-web';
 import { Product } from '../core';
 
 @Component({
@@ -34,6 +33,7 @@ export class ProductDetailComponent implements OnChanges {
       this.editingProduct = { ...this.product };
       this.addMode = false;
       const viewerDiv = document.getElementById('viewerContext');
+      const parameterstable = document.getElementById('parameterstable');
       const design = this.editingProduct.file;
       const headers = new HttpHeaders().set(
         'Content-Type',
@@ -46,19 +46,27 @@ export class ProductDetailComponent implements OnChanges {
       viewerDiv.setAttribute('design-url', this.editingProduct.file);
 
       this.gProcessor = new gProcessor(viewerDiv, {
-        viewerwidth: '100%',
-        viewerheight: '100%',
+        
         drawLines: true,
         drawFaces: true,
         processor: {
           viewerdiv: viewerDiv,
-        },
-        init: {
+          setStatus: (e, e1) => {
+            console.table(e);
+            console.table(e1);
+          },
           onUpdate: (e, e1) => {
             console.table(e);
             console.table(e1);
           },
+          parameterstable: parameterstable,
         },
+        // init: {
+        //   onUpdate: (e, e1) => {
+        //     console.table(e);
+        //     console.table(e1);
+        //   },
+        // },
       });
     } else {
       this.editingProduct = {

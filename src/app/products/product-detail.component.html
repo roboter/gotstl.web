@@ -7,14 +7,13 @@
     </header>
     <div class="card-content">
         <div class="content">
-            <div class="field" *ngIf="editingProduct.id">
-             
-                <input  [(ngModel)]="editingProduct.id"  />
-            </div>
+            
             <div oncontextmenu="return false;" id="viewerContext">
 
             </div>
-            <textarea name="code" [(ngModel)]="editingProduct.code"></textarea>
+            <textarea name="code" [(ngModel)]="editingProduct.code" style="width: 100%;"></textarea>
+            <div id="parameterstable">
+            </div>
             <!-- <p>Hello {{ editingProduct.code }}!</p> -->
             <!-- <div class="field" *ngIf="editingProduct.id">
                 <label class="label" for="id"> id </label>

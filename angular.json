@@ -33,7 +33,7 @@
               "node_modules/font-awesome/css/font-awesome.css",
               "src/styles.scss"
             ],
-            "scripts": ["src/openjscad.umd.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {
