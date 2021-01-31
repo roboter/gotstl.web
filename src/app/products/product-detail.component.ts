@@ -95,6 +95,7 @@ export class ProductDetailComponent implements OnChanges {
   }
 
   onUpdate() {
+    this.gProcessor.setJsCad(this.editingProduct.code);
     this.gProcessor.rebuildSolids();
   }
 

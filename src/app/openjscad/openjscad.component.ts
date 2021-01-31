@@ -14,8 +14,7 @@ export class OpenjscadComponent implements OnInit {
   public gProcessor = null;
   sanitizedURL: SafeResourceUrl;
   public outputFile: any;
-  constructor(private sanitizer: DomSanitizer) {
-  }
+  constructor(private sanitizer: DomSanitizer) {}
 
   sanitizeImageUrl(imageUrl: string): SafeUrl {
     return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
@@ -51,7 +50,6 @@ export class OpenjscadComponent implements OnInit {
         parameterstable: parameterstable,
         formatDropdown: formatDropdown,
         selectedFormatInfo: function selectedFormatInfo() {
-          console.log('ovverride selectedFormatInfo');
           return this.formatInfo('stl');
         },
         ondownload(t) {
@@ -72,6 +70,7 @@ export class OpenjscadComponent implements OnInit {
   }
 
   onUpdate() {
+    // this.gProcessor.setJsCad(this.product.code);
     this.gProcessor.rebuildSolids();
   }
 
