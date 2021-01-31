@@ -24,7 +24,6 @@ const data = {
       file: 'assets/examples/echo.jscad',
       image: 'assets/examples/echo.png',
     },
-
     {
       id: 50,
       name: 'gear',
@@ -32,6 +31,14 @@ const data = {
       quantity: 1,
       file: 'assets/examples/gear.jscad',
       image: 'assets/examples/gear.png',
+    },
+    {
+      id: 60,
+      name: 'name_plate',
+      description: 'name_plate',
+      quantity: 1,
+      file: 'assets/examples/name_plate.jscad',
+      image: 'assets/examples/name_plate.png',
     },
   ],
 };
