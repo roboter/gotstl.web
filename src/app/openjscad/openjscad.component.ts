@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from '@angular/platform-browser';
 import * as gProcessor from '@jwc/jscad-web';
-// import * as Processor from '@jscad/processor-bare';
-
-//gProcessor: any;
-
-//declare const gProcessor: any;
-
 @Component({
   selector: 'app-openjscad',
   templateUrl: './openjscad.component.html',
@@ -13,31 +12,20 @@ import * as gProcessor from '@jwc/jscad-web';
 })
 export class OpenjscadComponent implements OnInit {
   public gProcessor = null;
-  constructor() {}
+  sanitizedURL: SafeResourceUrl;
+  public outputFile: any;
+  constructor(private sanitizer: DomSanitizer) {
+  }
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+
   ngOnInit(): void {
     const viewerDiv = document.getElementById('viewerContext');
     const parameterstable = document.getElementById('parameterstable');
-    viewerDiv.setAttribute('design-url', 'assets/examples/echo.jscad');
-
-    //  if (parameterstable === null) {
-    const element = document.createElement('button');
-    element.innerHTML = 'Update';
-    element.id = 'updateButton';
-
-    element.onclick = function (e) {
-      //this.gProcessor.rebuildSolid();
-    };
-    parameterstable.appendChild(element);
-
-    // gProcessor.Processor.prototype.setStatus = function (e, e1) {
-    //   console.table(e);
-    //   console.table(e1);
-    // };
-
-    // gProcessor.setStatus = function (e, e1) {
-    //   console.table(e);
-    //   console.table(e1);
-    // };
+    const formatDropdown = document.getElementById('formatDropdown');
+    viewerDiv.setAttribute('design-url', 'assets/examples/gear.jscad');
 
     this.gProcessor = new gProcessor(viewerDiv, {
       viewerwidth: '100%',
@@ -51,6 +39,9 @@ export class OpenjscadComponent implements OnInit {
           console.table(e1);
         },
         onUpdate: (e, e1) => {
+          if (e.outputFile) {
+            this.outputFile = e.outputFile.data;
+          }
           console.table(e);
           console.table(e1);
         },
@@ -58,6 +49,14 @@ export class OpenjscadComponent implements OnInit {
           console.log('createParamControls');
         },
         parameterstable: parameterstable,
+        formatDropdown: formatDropdown,
+        selectedFormatInfo: function selectedFormatInfo() {
+          console.log('ovverride selectedFormatInfo');
+          return this.formatInfo('stl');
+        },
+        ondownload(t) {
+          console.table(t);
+        },
       },
       init: {
         onUpdate: (e, e1) => {
@@ -69,6 +68,22 @@ export class OpenjscadComponent implements OnInit {
           console.table(e1);
         },
       },
+    });
+  }
+
+  onUpdate() {
+    this.gProcessor.rebuildSolids();
+  }
+
+  generateOutputFile() {
+    this.gProcessor.generateOutputFile({
+      name: 'stl',
+      displayName: 'STL (Binary)',
+      description: 'STereoLithography, Binary',
+      extension: 'stl',
+      mimetype: 'application/sla',
+      convertCSG: true,
+      convertCAG: false,
     });
   }
 }

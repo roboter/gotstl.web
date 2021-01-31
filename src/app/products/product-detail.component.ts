@@ -8,6 +8,7 @@ import {
   SimpleChanges,
   ChangeDetectionStrategy,
 } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
 import * as gProcessor from '@jwc/jscad-web';
 import { Product } from '../core';
 
@@ -25,8 +26,10 @@ export class ProductDetailComponent implements OnChanges {
   addMode = false;
   editingProduct: Product;
   public gProcessor = null;
+  sanitizedURL: SafeResourceUrl;
+  public outputFile: any;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
 
   ngOnChanges(changes: SimpleChanges) {
     if (this.product && this.product.id) {
@@ -46,7 +49,6 @@ export class ProductDetailComponent implements OnChanges {
       viewerDiv.setAttribute('design-url', this.editingProduct.file);
 
       this.gProcessor = new gProcessor(viewerDiv, {
-        
         drawLines: true,
         drawFaces: true,
         processor: {
@@ -56,8 +58,9 @@ export class ProductDetailComponent implements OnChanges {
             console.table(e1);
           },
           onUpdate: (e, e1) => {
-            console.table(e);
-            console.table(e1);
+            if (e.outputFile) {
+              this.outputFile = e.outputFile.data;
+            }
           },
           parameterstable: parameterstable,
         },
@@ -89,5 +92,25 @@ export class ProductDetailComponent implements OnChanges {
   saveProduct() {
     this.save.emit(this.editingProduct);
     this.clear();
+  }
+
+  onUpdate() {
+    this.gProcessor.rebuildSolids();
+  }
+
+  sanitizeImageUrl(imageUrl: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(imageUrl);
+  }
+
+  generateOutputFile() {
+    this.gProcessor.generateOutputFile({
+      name: 'stl',
+      displayName: 'STL (Binary)',
+      description: 'STereoLithography, Binary',
+      extension: 'stl',
+      mimetype: 'application/sla',
+      convertCSG: true,
+      convertCAG: false,
+    });
   }
 }

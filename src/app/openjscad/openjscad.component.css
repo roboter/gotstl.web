@@ -125,13 +125,9 @@ canvas {
  */
 
 .jscad-container {
-  margin: 5px 15px 5px 5px; /* not inherited */
-  padding: 20px; /* not inherited */
   color: Black;
   font-weight: bold;
   font-family: Helvetica, Arial, Sans;
-
-
 }
 
 #header {
@@ -139,10 +135,6 @@ canvas {
 }
 
 #viewerContext {
-  margin: 5px; /* not inherited */
-  /* border: thin solid gray; not inherited */
-  padding: 0px; /* not inherited */
-
   background: white;
   width: 1000px;
   height: 100%;

@@ -14,6 +14,10 @@
             <textarea name="code" [(ngModel)]="editingProduct.code" style="width: 100%;"></textarea>
             <div id="parameterstable">
             </div>
+            <button id="button" (click)="onUpdate()">Update</button>
+            <button id="button" (click)="generateOutputFile()">Generate STL</button>
+            <a *ngIf="outputFile" download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)"
+                class="downloadOutputFileLink">download</a>
             <!-- <p>Hello {{ editingProduct.code }}!</p> -->
             <!-- <div class="field" *ngIf="editingProduct.id">
                 <label class="label" for="id"> id </label>

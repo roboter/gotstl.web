@@ -24,6 +24,15 @@ const data = {
       file: 'assets/examples/echo.jscad',
       image: 'assets/examples/echo.png',
     },
+
+    {
+      id: 50,
+      name: 'gear',
+      description: 'gear',
+      quantity: 1,
+      file: 'assets/examples/gear.jscad',
+      image: 'assets/examples/gear.png',
+    },
   ],
 };
 
