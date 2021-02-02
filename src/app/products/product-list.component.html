@@ -1,9 +1,13 @@
 <div *ngIf="!products?.length">
     Loading data ...
 </div>
+<div class="container is-max-desktop">
+    <div class="notification is-primary">
+        <a href="https://joostn.github.io/OpenJsCad/">playgroud</a>
+    </div>
+</div>
 <section class="section">
     <div class="container">
-
         <div class="card" *ngFor="let product of products; trackBy: trackByProduct; let i = index">
 
             <div class="card-image">

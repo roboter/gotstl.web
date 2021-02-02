@@ -1,5 +1,5 @@
 /* openjscad.css, originally written by Joost Nieuwenhuijse
- *    few changes made by Rene K. Mueller for OpenSCAD.org
+ * few changes made by Rene K. Mueller for OpenSCAD.org
  */
 
 #filedropzone {
@@ -160,12 +160,10 @@ canvas {
 }
 
 #viewerContext {
-
-
   background: white;
-  width: 100%;
+  width: 66.6666666667%;
   height: 100%;
-  min-height: 300px;
+  min-height: 500px;
   top: 0px;
   bottom: 0px;
 }

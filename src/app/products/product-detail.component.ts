@@ -8,7 +8,11 @@ import {
   SimpleChanges,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl, SafeUrl } from '@angular/platform-browser';
+import {
+  DomSanitizer,
+  SafeResourceUrl,
+  SafeUrl,
+} from '@angular/platform-browser';
 import * as gProcessor from '@jwc/jscad-web';
 import { Product } from '../core';
 
@@ -76,10 +80,10 @@ export class ProductDetailComponent implements OnChanges {
         id: undefined,
         name: '',
         description: '',
-        quantity: 1,
         image: '',
         file: '',
         code: 'test',
+        url: '',
       };
       this.addMode = true;
     }
