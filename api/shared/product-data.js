@@ -41,6 +41,14 @@ const data = {
       url: 'http://robinsonia.com/?tag=3d-printing',
       image: 'assets/jscad/robinsonia/ball-chute-212x300.jpg',
     },
+    {
+      id: 80,
+      name: 'S Hook',
+      description: 'parametric S hook',
+      file: 'assets/joostn/hook.jscad',
+      url: 'https://www.thingiverse.com/thing:17625',
+      image: 'assets/joostn/hook.jpg',
+    },
   ],
 };
 
