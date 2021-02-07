@@ -47,7 +47,8 @@ const data = {
       description: 'parametric S hook',
       file: 'assets/examples/joostn/hook.jscad',
       url: 'https://www.thingiverse.com/thing:17625',
-      image: 'assets/examples/joostn/hook.jpg',
+      image: 'assets/examples/joostn/hook.png',
+      license: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
   ],
 };
