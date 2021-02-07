@@ -45,9 +45,9 @@ const data = {
       id: 80,
       name: 'S Hook',
       description: 'parametric S hook',
-      file: 'assets/joostn/hook.jscad',
+      file: 'assets/examples/joostn/hook.jscad',
       url: 'https://www.thingiverse.com/thing:17625',
-      image: 'assets/joostn/hook.jpg',
+      image: 'assets/examples/joostn/hook.jpg',
     },
   ],
 };
