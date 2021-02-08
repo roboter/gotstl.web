@@ -9,9 +9,10 @@ import { AboutComponent } from './about.component';
 import { RouterModule } from '@angular/router';
 import { externalModules } from './build-specific';
 import { declarations } from './core';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
-  declarations: [AppComponent, AboutComponent, declarations],
+  declarations: [AppComponent, AboutComponent, declarations, ProductDetailsComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
