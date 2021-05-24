@@ -50,6 +50,14 @@ const data = {
       image: 'assets/examples/joostn/hook.png',
       license: 'https://creativecommons.org/licenses/by-sa/3.0/',
     },
+    {
+      id: 90,
+      name: 'Interactive direct drive extruder',
+      file: 'assets/examples/denisc/extruder.json',
+      url: 'https://www.thingiverse.com/thing:716381',
+      image: 'assets/examples/denisc/extruder.jpg',
+      license: 'http://www.gnu.org/licenses/old-licenses/gpl-2.0.html'
+    }
   ],
 };
 
