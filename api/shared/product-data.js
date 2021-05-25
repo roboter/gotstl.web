@@ -53,7 +53,7 @@ const data = {
     {
       id: 90,
       name: 'Interactive direct drive extruder',
-      file: 'assets/examples/denisc/extruder.json',
+      file: 'assets/examples/denisc/extruder.jscad',
       url: 'https://www.thingiverse.com/thing:716381',
       image: 'assets/examples/denisc/extruder.jpg',
       license: 'http://www.gnu.org/licenses/old-licenses/gpl-2.0.html'
