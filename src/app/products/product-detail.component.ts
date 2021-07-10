@@ -3,9 +3,7 @@ import {
   Component,
   Input,
   EventEmitter,
-  OnChanges,
   Output,
-  SimpleChanges,
   ChangeDetectionStrategy,
   OnInit,
 } from '@angular/core';
@@ -49,7 +47,10 @@ export class ProductDetailComponent implements OnInit {
       );
       this.http
         .get(design, { headers, responseType: 'text' })
-        .subscribe((res: string) => (this.editingProduct.code = res));
+        .subscribe((res: string) => {
+          this.editingProduct.code = res;
+          this.save.emit(this.editingProduct);
+        });
 
       viewerDiv.setAttribute('design-url', this.editingProduct.file);
 
@@ -67,7 +68,7 @@ export class ProductDetailComponent implements OnInit {
               this.outputFile = e.outputFile.data;
             }
           },
-          parameterstable: parameterstable,
+          parameterstable: parameterstable
         },
       });
     } else {
