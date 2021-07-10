@@ -56,8 +56,8 @@ const data = {
       file: 'assets/examples/denisc/extruder.jscad',
       url: 'https://www.thingiverse.com/thing:716381',
       image: 'assets/examples/denisc/extruder.jpg',
-      license: 'http://www.gnu.org/licenses/old-licenses/gpl-2.0.html'
-    }
+      license: 'http://www.gnu.org/licenses/old-licenses/gpl-2.0.html',
+    },
   ],
 };
 
@@ -90,4 +90,16 @@ const getProducts = () => {
   return data.products;
 };
 
-module.exports = { addProduct, updateProduct, deleteProduct, getProducts };
+const getProduct = (id) => {
+  const value = parseInt(id, 10);
+  const index = data.products.findIndex((v) => v.id === value);
+  return data.products[index];
+};
+
+module.exports = {
+  addProduct,
+  updateProduct,
+  deleteProduct,
+  getProducts,
+  getProduct,
+};

@@ -1,1 +1,20 @@
-<p>product-details works!</p>
+<div class="card edit-detail">
+  <header *ngIf="editingProduct" class="card-header">
+    <p class="card-header-title">
+      {{ editingProduct.name }}
+      &nbsp;
+    </p>
+  </header>
+  <div class="card-content">
+    <div class="content">
+      <div oncontextmenu="return false;" id="viewerContext"></div>
+      <div id="parameterstable"></div>
+      <button id="button" (click)="onUpdate()">Update</button>
+      <button id="button" (click)="generateOutputFile()">Generate STL</button>
+      <a *ngIf="outputFile" download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)"
+        class="downloadOutputFileLink">download</a>
+      <textarea style="width: 100%;" rows="14" id="code" [(ngModel)]="editingProduct.code" placeholder="">
+    </textarea>
+    </div>
+  </div>
+</div>

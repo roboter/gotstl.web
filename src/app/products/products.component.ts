@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../core';
-import { ProductService } from './product.service';
+import { ProductService, ProductsService } from './product.service';
 
 @Component({
   selector: 'app-products',
@@ -14,7 +14,7 @@ export class ProductsComponent implements OnInit {
   productToDelete: Product;
   showModal = false;
 
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductsService) {
     this.products$ = productService.entities$;
   }
 
@@ -74,6 +74,6 @@ export class ProductsComponent implements OnInit {
   }
 
   update(product: Product) {
-    this.productService.update(product);
+  //  this.productService.update(product);
   }
 }
