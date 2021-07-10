@@ -7,6 +7,7 @@ import {
   Output,
   SimpleChanges,
   ChangeDetectionStrategy,
+  OnInit,
 } from '@angular/core';
 import {
   DomSanitizer,
