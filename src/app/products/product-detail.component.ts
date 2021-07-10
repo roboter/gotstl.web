@@ -22,7 +22,7 @@ import { Product } from '../core';
   styleUrls: ['product-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ProductDetailComponent implements OnChanges {
+export class ProductDetailComponent implements OnInit {
   @Input() product: Product;
   @Output() unselect = new EventEmitter<string>();
   @Output() save = new EventEmitter<Product>();
@@ -33,9 +33,9 @@ export class ProductDetailComponent implements OnChanges {
   sanitizedURL: SafeResourceUrl;
   public outputFile: any;
 
-  constructor(private http: HttpClient, private sanitizer: DomSanitizer) {}
+  constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnInit(): void {
     if (this.product && this.product.id) {
       this.editingProduct = { ...this.product };
       this.addMode = false;
@@ -68,12 +68,6 @@ export class ProductDetailComponent implements OnChanges {
           },
           parameterstable: parameterstable,
         },
-        // init: {
-        //   onUpdate: (e, e1) => {
-        //     console.table(e);
-        //     console.table(e1);
-        //   },
-        // },
       });
     } else {
       this.editingProduct = {
@@ -119,3 +113,4 @@ export class ProductDetailComponent implements OnChanges {
     });
   }
 }
+
