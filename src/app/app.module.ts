@@ -10,6 +10,7 @@ import { RouterModule } from '@angular/router';
 import { externalModules } from './build-specific';
 import { declarations } from './core';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { NgxGoogleAnalyticsModule } from 'ngx-google-analytics';
 
 @NgModule({
   declarations: [AppComponent, AboutComponent, declarations, ProductDetailsComponent],
@@ -19,7 +20,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     RouterModule.forRoot(routes),
     AppStoreModule,
     externalModules,
-
+    NgxGoogleAnalyticsModule.forRoot('G-QNRSG74G3G')
   ],
   bootstrap: [AppComponent],
 })
