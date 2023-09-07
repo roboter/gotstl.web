@@ -1,5 +1,9 @@
 # Gotstl.com points to Azure static page
 
+## Tech
+Angular 13
+
+
 ## Limitation
 need to have `www.` in front [http://www.gotstl.com](http://www.gotstl.com)
 
