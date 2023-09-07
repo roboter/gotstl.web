@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  API: 'api'
+  API: 'api',
+  appInsights: {
+    instrumentationKey: '<your-guid>'
+}
 };
 
 /*

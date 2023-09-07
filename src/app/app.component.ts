@@ -1,13 +1,24 @@
 import { Component } from '@angular/core';
-export class Customer {
-  public id: number;
-  public name: string;
-}
+import { ApplicationInsights } from '@microsoft/applicationinsights-web';
+import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  customers: Customer[] = [{ id: 1, name: 'john' }];
+  constructor(private router: Router) {
+    var angularPlugin = new AngularPlugin();
+    const appInsights = new ApplicationInsights({
+      config: {
+        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+        extensions: [angularPlugin],
+        extensionConfig: {
+          [angularPlugin.identifier]: { router: this.router },
+        },
+      },
+    });
+    appInsights.loadAppInsights();
+  }
 }
