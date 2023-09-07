@@ -1,7 +1,7 @@
 # Gotstl.com points to Azure static page
 
 ## Tech
-Angular 13
+Angular 14
 
 
 ## Limitation
