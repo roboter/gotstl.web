@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 import { AngularPlugin } from '@microsoft/applicationinsights-angularplugin-js';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -12,7 +13,7 @@ export class AppComponent {
     var angularPlugin = new AngularPlugin();
     const appInsights = new ApplicationInsights({
       config: {
-        instrumentationKey: 'YOUR_INSTRUMENTATION_KEY_GOES_HERE',
+        instrumentationKey: environment.appInsights.instrumentationKey,
         extensions: [angularPlugin],
         extensionConfig: {
           [angularPlugin.identifier]: { router: this.router },
