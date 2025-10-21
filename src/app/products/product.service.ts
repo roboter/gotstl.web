@@ -16,13 +16,6 @@ export class ProductsService extends EntityCollectionServiceBase<Product> {
   }
 }
 
-// @Injectable({ providedIn: 'root' })
-// export class Produc11tService extends EntityDataService {
-//   constructor(serviceElementsFactory: EntityCollectionServiceElementsFactory) {
-//     super('Product', serviceElementsFactory);
-//   }
-// }
-
 @Injectable({ providedIn: 'root' })
 export class ProductService extends DefaultDataService<Product> {
   constructor(

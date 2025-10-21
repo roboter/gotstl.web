@@ -22,10 +22,6 @@ export class ProductListComponent {
     return product.id;
   }
 
-  // selectProduct(product: Product) {
-  //   this.selected.emit(product);
-  // }
-
   deleteProduct(product: Product) {
     this.deleted.emit(product);
   }
