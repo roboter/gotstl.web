@@ -64,6 +64,13 @@ const data = {
       file: 'assets/examples/pulley.jscad',
       image: 'assets/examples/pulley.png',
     },
+    {
+      id: 110,
+      name: 'keychain',
+      description: 'Customizable Keychain Tag',
+      file: 'assets/examples/keychain.jscad',
+      image: 'assets/examples/keychain.png',
+    },
   ],
 };
 

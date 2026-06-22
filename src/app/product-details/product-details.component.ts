@@ -28,6 +28,17 @@ export class ProductDetailsComponent implements OnInit {
     const viewerDiv = document.getElementById('viewerContext');
     const parameterstable = document.getElementById('parameterstable');
 
+    let debounceTimer;
+    const triggerUpdate = () => {
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        this.onUpdate();
+      }, 150);
+    };
+
+    parameterstable.addEventListener('input', triggerUpdate);
+    parameterstable.addEventListener('change', triggerUpdate);
+
     this.activatedRoute.params.subscribe((params: Params) => {
       this.productService.getById(params.id).subscribe((product) => {
         this.editingProduct = product;

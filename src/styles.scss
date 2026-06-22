@@ -169,3 +169,8 @@ button.link {
   border: none;
   cursor: pointer;
 }
+
+.navbar-item.is-active {
+  color: #fff !important;
+  background-color: $primary !important;
+}
