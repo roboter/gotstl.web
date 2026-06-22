@@ -71,6 +71,13 @@ const data = {
       file: 'assets/examples/keychain.jscad',
       image: 'assets/examples/keychain.png',
     },
+    {
+      id: 120,
+      name: 'extrusion_bracket',
+      description: 'Customizable Extrusion Plate Brackets',
+      file: 'assets/examples/extrusion_bracket.jscad',
+      image: 'assets/examples/extrusion_bracket.png',
+    },
   ],
 };
 
