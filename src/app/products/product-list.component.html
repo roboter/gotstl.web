@@ -1,27 +1,36 @@
 <div *ngIf="!products?.length">
   Loading data ...
 </div>
-<div class="container is-max-desktop">
-  <div class="notification is-primary">
-    <a href="https://joostn.github.io/OpenJsCad/">playground</a><br />
-    <a href="https://www.facebook.com/groups/gotstl">Facebook group</a><br />
-    <a href="http://www.implicitcad.org/">Implicitcad</a>
-  </div>
-</div>
-<section class="section">
-  <div class="container">
-    <div class="card" *ngFor="let product of products; trackBy: trackByProduct; let i = index">
+<section class="section product-list-section">
+  <div class="product-list-layout">
+    <div class="product-grid">
+      <div class="card" *ngFor="let product of products; trackBy: trackByProduct; let i = index">
 
-      <div class="card-image">
-        <figure class="image is-4by3">
-          <img [src]="product.image" [alt]="product.name">
-        </figure>
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img [src]="product.image" [alt]="product.name">
+          </figure>
+        </div>
+        <app-card-content [name]="product.name" [description]="product.description"></app-card-content>
+        <footer class="card-footer">
+          <app-button-footer class="card-footer-item" [routerLink]="['/product', product.id]" [className]="'edit-item'"
+            [iconClasses]="'fas fa-edit'" label="View" [item]="product"></app-button-footer>
+        </footer>
       </div>
-      <app-card-content [name]="product.name" [description]="product.description"></app-card-content>
-      <footer class="card-footer">
-        <app-button-footer class="card-footer-item" [routerLink]="['/product', product.id]" [className]="'edit-item'"
-          [iconClasses]="'fas fa-edit'" label="View" [item]="product"></app-button-footer>
-      </footer>
     </div>
+
+    <aside class="resource-links-column">
+      <div class="notification is-primary resource-links">
+        <a href="https://joostn.github.io/OpenJsCad/">Playground</a><br />
+        <a href="https://www.facebook.com/groups/gotstl">Facebook group</a><br />
+        <a href="http://www.implicitcad.org/">Implicitcad</a><br />
+        <a href="https://www.openjscad.xyz/">OpenJSCad.xyz</a><br />
+        <a href="https://www.blockscad3d.com/editor/">BlockSCad3d</a><br />
+        <a href="https://danmarshall.github.io/jscad-gallery/">Another jscad gallery</a> <br />
+        <a href="https://medium.com/@johnwebbcole/from-javascript-to-reality-a-raspberrypi-tablet-1381f17837d">Raspberrypi
+          case</a>
+        <br />
+      </div>
+    </aside>
   </div>
 </section>
