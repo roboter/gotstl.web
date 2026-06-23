@@ -128,6 +128,79 @@ import { Component } from '@angular/core';
         </div>
       </div>
 
+      <!-- OpenJSCAD User Guide Summary -->
+      <div class="guide-reference-section mb-6">
+        <div class="content-title-group mb-4">
+          <h2 class="title is-3">OpenJSCAD User Guide</h2>
+          <p class="subtitle is-6">
+            A practical summary of the Wikibooks guide for using OpenJSCAD in the browser, locally, and from scripts.
+          </p>
+        </div>
+
+        <div class="guide-topic-grid">
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-window-maximize" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">Use It in the Browser</h3>
+            <p>
+              OpenJSCAD provides a viewer and editor for loading <code>.jscad</code> files, editing scripts, and previewing models.
+              It supports browser workflows such as drag-and-drop loading and auto reload while editing files externally.
+            </p>
+          </div>
+
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-terminal" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">Run It Locally</h3>
+            <p>
+              Projects can run offline from a local installation or from the command line. The CLI can render scripts and export common formats,
+              including STL, AMF, DXF, and converted JSCAD output.
+            </p>
+          </div>
+
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-file-code-o" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">Script Anatomy</h3>
+            <p>
+              A model starts with <code>main()</code>, which returns one solid or an array of separate solids. Geometry is built with JavaScript
+              functions, so reusable helpers and parameter-driven designs fit naturally.
+            </p>
+          </div>
+
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-cube" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">3D Modeling Tools</h3>
+            <p>
+              Core solids include boxes, spheres, cylinders, tori, polyhedra, and text. Transformations such as scale, rotate, translate,
+              mirror, center, union, intersection, and difference shape those primitives into printable parts.
+            </p>
+          </div>
+
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-object-group" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">2D to 3D Workflows</h3>
+            <p>
+              Circles, rectangles, polygons, and paths can be transformed in 2D, then converted into solid geometry with linear,
+              rectangular, or rotational extrusion.
+            </p>
+          </div>
+
+          <div class="guide-topic-card">
+            <div class="guide-topic-icon"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+            <h3 class="title is-5 mb-2">Larger Projects</h3>
+            <p>
+              Bigger designs can be split across files, organized as project folders, and built with reusable modules. That makes scripted CAD
+              easier to maintain as models grow beyond a single file.
+            </p>
+          </div>
+        </div>
+
+        <div class="guide-reference-footer">
+          <a href="https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#OpenJSCAD_Programming_Guide" target="_blank" class="has-text-weight-bold">
+            <span class="icon is-small mr-1"><i class="fa fa-book" aria-hidden="true"></i></span>
+            <span>Read the full OpenJSCAD Wikibooks guide</span>
+          </a>
+        </div>
+      </div>
+
       <!-- Primitive Renderings -->
       <div class="content-title-group mb-5">
         <h2 class="title is-3">Primitive Renderings</h2>
@@ -215,25 +288,30 @@ import { Component } from '@angular/core';
       </div>
 
       <!-- Section Title -->
-      <div class="content-title-group mb-5">
+      <div class="content-title-group mb-4">
         <h2 class="title is-3">OpenJSCAD Modeling Examples</h2>
       </div>
       
       <p class="subtitle is-6 mb-5">
-        Explore these practical, classic OpenJSCAD (v1) examples. Click copy and paste them directly into the custom model editor to try them out!
+        Short, classic examples that open directly in the editor for hands-on exploration.
       </p>
 
       <!-- Examples Grid -->
-      <div class="columns is-multiline">
+      <div class="columns is-multiline modeling-examples">
         <!-- Example 1 -->
         <div class="column is-12 mb-5">
           <div class="card code-card">
             <div class="card-content-header">
-              <span class="tag is-primary is-rounded mb-2">Example 1</span>
-              <h3 class="title is-4 mb-2">Basic CSG Assembly</h3>
+              <span class="tag is-primary is-light mb-2">example001.jscad</span>
+              <h3 class="title is-4 mb-2">Sphere With Three Cutouts</h3>
               <p class="has-text-grey-darker mb-3">
-                This example demonstrates how to create a basic plate and subtract a cylinder from it to create a mounting hole using the <code>difference()</code> operation.
+                Start with a sphere, subtract three rotated cylinders, and inspect how CSG removes material.
               </p>
+              <a class="button is-primary is-small" [routerLink]="['/product', 'example001']"
+                [queryParams]="{ file: 'assets/examples/example001.jscad', name: 'Example 001' }">
+                <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span>Open in editor</span>
+              </a>
             </div>
             <div class="code-container">
               <button class="copy-button" (click)="copyToClipboard(example1, 'ex1')">
@@ -248,11 +326,16 @@ import { Component } from '@angular/core';
         <div class="column is-12 mb-5">
           <div class="card code-card">
             <div class="card-content-header">
-              <span class="tag is-primary is-rounded mb-2">Example 2</span>
-              <h3 class="title is-4 mb-2">Parametric Customizer Inputs</h3>
+              <span class="tag is-primary is-light mb-2">example002.jscad</span>
+              <h3 class="title is-4 mb-2">Union, Difference, Intersection</h3>
               <p class="has-text-grey-darker mb-3">
-                Learn how to declare customizer input fields (sliders, numeric inputs) using <code>getParameterDefinitions()</code>, and process them dynamically inside the <code>main()</code> function.
+                A compact demonstration of nested boolean operations using cubes and a tapered cylinder.
               </p>
+              <a class="button is-primary is-small" [routerLink]="['/product', 'example002']"
+                [queryParams]="{ file: 'assets/examples/example002.jscad', name: 'Example 002' }">
+                <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span>Open in editor</span>
+              </a>
             </div>
             <div class="code-container">
               <button class="copy-button" (click)="copyToClipboard(example2, 'ex2')">
@@ -267,11 +350,16 @@ import { Component } from '@angular/core';
         <div class="column is-12 mb-5">
           <div class="card code-card">
             <div class="card-content-header">
-              <span class="tag is-primary is-rounded mb-2">Example 3</span>
-              <h3 class="title is-4 mb-2">2D Polygon Paths & Extrusions</h3>
+              <span class="tag is-primary is-light mb-2">example003.jscad</span>
+              <h3 class="title is-4 mb-2">Cross-Shaped Solid</h3>
               <p class="has-text-grey-darker mb-3">
-                This demonstrates modeling a complex 2D custom path using coordinates with <code>polygon()</code> and extruding it into a twisted 3D model using <code>linear_extrude()</code>.
+                Combine centered boxes into a balanced solid, then carve channels from each axis.
               </p>
+              <a class="button is-primary is-small" [routerLink]="['/product', 'example003']"
+                [queryParams]="{ file: 'assets/examples/example003.jscad', name: 'Example 003' }">
+                <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span>Open in editor</span>
+              </a>
             </div>
             <div class="code-container">
               <button class="copy-button" (click)="copyToClipboard(example3, 'ex3')">
@@ -286,11 +374,16 @@ import { Component } from '@angular/core';
         <div class="column is-12 mb-5">
           <div class="card code-card">
             <div class="card-content-header">
-              <span class="tag is-primary is-rounded mb-2">Example 4</span>
-              <h3 class="title is-4 mb-2">Repetitive Patterns using Loops</h3>
+              <span class="tag is-primary is-light mb-2">example004.jscad</span>
+              <h3 class="title is-4 mb-2">Cube Minus Sphere</h3>
               <p class="has-text-grey-darker mb-3">
-                Rather than manually placing copies, use standard JavaScript <code>for</code> loops and basic trigonometry (<code>Math.cos</code> and <code>Math.sin</code>) to create circular patterns like flange bolt layouts.
+                The simplest subtractive form: a centered cube with a rounded volume removed from it.
               </p>
+              <a class="button is-primary is-small" [routerLink]="['/product', 'example004']"
+                [queryParams]="{ file: 'assets/examples/example004.jscad', name: 'Example 004' }">
+                <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span>Open in editor</span>
+              </a>
             </div>
             <div class="code-container">
               <button class="copy-button" (click)="copyToClipboard(example4, 'ex4')">
@@ -300,13 +393,31 @@ import { Component } from '@angular/core';
             </div>
           </div>
         </div>
+
+        <!-- Example 5 -->
+        <div class="column is-12 mb-5">
+          <div class="card code-card">
+            <div class="card-content-header">
+              <span class="tag is-primary is-light mb-2">example005.jscad</span>
+              <h3 class="title is-4 mb-2">Looped Cylinder Pattern</h3>
+              <p class="has-text-grey-darker mb-3">
+                Use a loop to place repeated cylinders around a circular body, then combine them into a larger assembly.
+              </p>
+              <a class="button is-primary is-small" [routerLink]="['/product', 'example005']"
+                [queryParams]="{ file: 'assets/examples/example005.jscad', name: 'Example 005' }">
+                <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+                <span>Open in editor</span>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Resources Section -->
       <div class="box mt-6 is-light-grey">
         <h3 class="title is-4 mb-3">Useful Resources</h3>
-        <div class="columns">
-          <div class="column is-4">
+        <div class="columns is-multiline">
+          <div class="column is-3">
             <div class="resource-link">
               <a href="https://openjscad.xyz/" target="_blank" class="has-text-weight-bold">
                 <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
@@ -315,7 +426,16 @@ import { Component } from '@angular/core';
               <p class="is-size-7 has-text-grey-dark mt-1">The main hub for OpenJSCAD versions, docs, and news.</p>
             </div>
           </div>
-          <div class="column is-4">
+          <div class="column is-3">
+            <div class="resource-link">
+              <a href="https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#OpenJSCAD_Programming_Guide" target="_blank" class="has-text-weight-bold">
+                <span class="icon is-small mr-1"><i class="fa fa-book" aria-hidden="true"></i></span>
+                <span>OpenJSCAD Wikibooks Guide</span>
+              </a>
+              <p class="is-size-7 has-text-grey-dark mt-1">A user and programming guide covering workflows, primitives, transforms, and projects.</p>
+            </div>
+          </div>
+          <div class="column is-3">
             <div class="resource-link">
               <a href="https://github.com/jscad/OpenJSCAD.org/wiki" target="_blank" class="has-text-weight-bold">
                 <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
@@ -324,7 +444,7 @@ import { Component } from '@angular/core';
               <p class="is-size-7 has-text-grey-dark mt-1">Access the community wiki, release timelines, and core repository.</p>
             </div>
           </div>
-          <div class="column is-4">
+          <div class="column is-3">
             <div class="resource-link">
               <a href="https://www.openjscad.xyz/forum.html" target="_blank" class="has-text-weight-bold">
                 <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
@@ -530,6 +650,45 @@ import { Component } from '@angular/core';
         grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
         gap: 1rem;
       }
+      .guide-reference-section {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .guide-topic-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      .guide-topic-card {
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        background: #f8fafc;
+      }
+      .guide-topic-icon {
+        align-items: center;
+        background: #1e3a8a;
+        border-radius: 6px;
+        color: #ffffff;
+        display: inline-flex;
+        height: 2.25rem;
+        justify-content: center;
+        margin-bottom: 0.75rem;
+        width: 2.25rem;
+      }
+      .guide-topic-card p {
+        color: #475569;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .guide-reference-footer {
+        border-top: 1px solid #e2e8f0;
+        margin-top: 1.25rem;
+        padding-top: 1rem;
+      }
       .primitive-card {
         background: #ffffff;
         border: 1px solid #e2e8f0;
@@ -559,6 +718,33 @@ import { Component } from '@angular/core';
         border-radius: 8px;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         border: 1px solid #e2e8f0;
+      }
+      .modeling-examples {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .modeling-examples .column {
+        margin-bottom: 0 !important;
+        padding: 0;
+        width: auto;
+      }
+      .modeling-examples .code-card {
+        height: 100%;
+      }
+      .modeling-examples .card-content-header {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .modeling-examples .button {
+        align-self: flex-start;
+        margin-top: auto;
+      }
+      .modeling-examples .code-container {
+        display: none;
       }
       .card-content-header {
         padding: 1.5rem 1.5rem 1rem 1.5rem;
