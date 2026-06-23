@@ -6,15 +6,65 @@ import { Component } from '@angular/core';
     <div class="container guide-container">
       <!-- Premium Hero Section -->
       <div class="hero-gradient">
-        <h1 class="title is-2 has-text-white mb-2">GotSTL & OpenJSCAD</h1>
-        <p class="subtitle is-5 has-text-grey-light mb-4">
-          Empowering designers and engineers with script-driven, parametric 3D modeling.
-        </p>
-        <div class="is-divider-accent"></div>
-        <p class="is-size-6 mt-3">
-          This platform uses **OpenJSCAD**, a browser-based technology that transforms JavaScript code into 3D models.
-          Define your geometries mathematically, parameterize key dimensions, and export ready-to-print STL files instantly.
-        </p>
+        <div class="hero-content">
+          <p class="hero-eyebrow">Parametric STL Modeling</p>
+          <h1 class="hero-title">GotSTL & OpenJSCAD</h1>
+          <p class="hero-lead">
+            Build reusable 3D models with JavaScript, tune dimensions in the browser, and export print-ready STL files.
+          </p>
+          <div class="is-divider-accent"></div>
+          <p class="hero-copy">
+            GotSTL pairs a curated model gallery with <strong>OpenJSCAD</strong>, a browser-native geometry engine that turns code into precise 3D parts.
+            Define shapes mathematically, expose the important dimensions as parameters, and generate model variations instantly.
+          </p>
+
+          <div class="hero-pill-grid">
+            <span><i class="fa fa-code" aria-hidden="true"></i> Script-driven CAD</span>
+            <span><i class="fa fa-sliders" aria-hidden="true"></i> Parametric controls</span>
+            <span><i class="fa fa-download" aria-hidden="true"></i> STL export</span>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="Rendered OpenJSCAD model previews">
+          <div class="hero-visual-header">
+            <span class="status-dot"></span>
+            <span>Live geometry preview</span>
+          </div>
+          <div class="hero-preview-grid">
+            <div class="hero-model-card model-card-large">
+              <img src="assets/examples/extrusion_bracket.png" alt="Extrusion bracket rendering">
+            </div>
+            <div class="hero-model-card">
+              <img src="assets/examples/gear.png" alt="Gear rendering">
+            </div>
+            <div class="hero-model-card">
+              <img src="assets/examples/logo.png" alt="OpenJSCAD logo rendering">
+            </div>
+          </div>
+          <div class="hero-code-panel">
+            <code>width = 60</code>
+            <code>holes = 4</code>
+            <code>export: STL</code>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video Section -->
+      <div class="card video-card mb-6">
+        <div class="card-content">
+          <div class="content-title-group mb-4">
+            <h2 class="title is-3">Video Introduction</h2>
+          </div>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/T9IfF_1Y4z8"
+              title="GotSTL OpenJSCAD video"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
       </div>
 
       <!-- Overview Columns -->
@@ -75,6 +125,92 @@ import { Component } from '@angular/core';
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Primitive Renderings -->
+      <div class="content-title-group mb-5">
+        <h2 class="title is-3">Primitive Renderings</h2>
+      </div>
+
+      <div class="primitive-grid mb-6">
+        <div class="primitive-card">
+          <div class="primitive-rendering">
+            <svg viewBox="0 0 180 140" role="img" aria-label="Cube primitive rendering">
+              <defs>
+                <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#93c5fd" />
+                  <stop offset="100%" stop-color="#3b82f6" />
+                </linearGradient>
+                <linearGradient id="cubeSide" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#1d4ed8" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </linearGradient>
+              </defs>
+              <polygon points="50,45 95,20 140,45 95,70" fill="url(#cubeTop)" />
+              <polygon points="50,45 95,70 95,120 50,95" fill="#2563eb" />
+              <polygon points="95,70 140,45 140,95 95,120" fill="url(#cubeSide)" />
+            </svg>
+          </div>
+          <h3 class="title is-5 mb-2">Cube</h3>
+          <p><code>cube()</code> creates boxes, plates, brackets, and other rectangular solids.</p>
+        </div>
+
+        <div class="primitive-card">
+          <div class="primitive-rendering">
+            <svg viewBox="0 0 180 140" role="img" aria-label="Sphere primitive rendering">
+              <defs>
+                <radialGradient id="sphereShade" cx="38%" cy="30%" r="68%">
+                  <stop offset="0%" stop-color="#bfdbfe" />
+                  <stop offset="45%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </radialGradient>
+              </defs>
+              <circle cx="90" cy="70" r="48" fill="url(#sphereShade)" />
+              <ellipse cx="90" cy="96" rx="38" ry="8" fill="#0f172a" opacity="0.18" />
+            </svg>
+          </div>
+          <h3 class="title is-5 mb-2">Sphere</h3>
+          <p><code>sphere()</code> builds rounded caps, ball joints, knobs, and smooth surfaces.</p>
+        </div>
+
+        <div class="primitive-card">
+          <div class="primitive-rendering">
+            <svg viewBox="0 0 180 140" role="img" aria-label="Cylinder primitive rendering">
+              <defs>
+                <linearGradient id="cylinderBody" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#1e40af" />
+                  <stop offset="50%" stop-color="#60a5fa" />
+                  <stop offset="100%" stop-color="#1d4ed8" />
+                </linearGradient>
+              </defs>
+              <rect x="48" y="38" width="84" height="64" fill="url(#cylinderBody)" />
+              <ellipse cx="90" cy="38" rx="42" ry="16" fill="#93c5fd" />
+              <path d="M48 102 C48 110 132 110 132 102" fill="#1d4ed8" />
+              <ellipse cx="90" cy="102" rx="42" ry="16" fill="#1e3a8a" opacity="0.35" />
+            </svg>
+          </div>
+          <h3 class="title is-5 mb-2">Cylinder</h3>
+          <p><code>cylinder()</code> is used for holes, posts, bushings, shafts, and round bosses.</p>
+        </div>
+
+        <div class="primitive-card">
+          <div class="primitive-rendering">
+            <svg viewBox="0 0 180 140" role="img" aria-label="Torus primitive rendering">
+              <defs>
+                <radialGradient id="torusShade" cx="42%" cy="30%" r="70%">
+                  <stop offset="0%" stop-color="#bfdbfe" />
+                  <stop offset="52%" stop-color="#3b82f6" />
+                  <stop offset="100%" stop-color="#1e3a8a" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="90" cy="70" rx="58" ry="40" fill="url(#torusShade)" />
+              <ellipse cx="90" cy="70" rx="28" ry="18" fill="#f8fafc" />
+              <path d="M62 70 C62 55 118 55 118 70" fill="none" stroke="#1e3a8a" stroke-width="4" opacity="0.35" />
+            </svg>
+          </div>
+          <h3 class="title is-5 mb-2">Torus</h3>
+          <p><code>torus()</code> creates rings, gaskets, tire-like forms, and rounded loops.</p>
         </div>
       </div>
 
@@ -173,7 +309,8 @@ import { Component } from '@angular/core';
           <div class="column is-4">
             <div class="resource-link">
               <a href="https://openjscad.xyz/" target="_blank" class="has-text-weight-bold">
-                🔗 Official JSCAD Website
+                <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
+                <span>Official JSCAD Website</span>
               </a>
               <p class="is-size-7 has-text-grey-dark mt-1">The main hub for OpenJSCAD versions, docs, and news.</p>
             </div>
@@ -181,7 +318,8 @@ import { Component } from '@angular/core';
           <div class="column is-4">
             <div class="resource-link">
               <a href="https://github.com/jscad/OpenJSCAD.org/wiki" target="_blank" class="has-text-weight-bold">
-                🔗 OpenJSCAD Wiki & Source Code
+                <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
+                <span>OpenJSCAD Wiki & Source Code</span>
               </a>
               <p class="is-size-7 has-text-grey-dark mt-1">Access the community wiki, release timelines, and core repository.</p>
             </div>
@@ -189,7 +327,8 @@ import { Component } from '@angular/core';
           <div class="column is-4">
             <div class="resource-link">
               <a href="https://www.openjscad.xyz/forum.html" target="_blank" class="has-text-weight-bold">
-                🔗 OpenJSCAD User Forum
+                <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
+                <span>OpenJSCAD User Forum</span>
               </a>
               <p class="is-size-7 has-text-grey-dark mt-1">Ask questions, share designs, and connect with other parametric modelers.</p>
             </div>
@@ -202,20 +341,145 @@ import { Component } from '@angular/core';
     `
       .guide-container {
         padding: 2.5rem 1rem;
-        max-width: 1012px;
+        max-width: 1180px;
       }
       .hero-gradient {
-        background: linear-gradient(135deg, #b52e31 0%, #7d1c1e 100%);
-        color: white;
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+        gap: 2.5rem;
+        align-items: center;
+        background:
+          linear-gradient(135deg, rgba(181, 46, 49, 0.96) 0%, rgba(125, 28, 30, 0.94) 52%, rgba(30, 58, 138, 0.94) 100%),
+          #7d1c1e;
+        color: #ffffff;
         border-radius: 8px;
-        padding: 3rem 2rem;
-        margin-bottom: 2.5rem;
-        box-shadow: 0 4px 15px rgba(181, 46, 49, 0.15);
+        padding: 4.5rem 3rem;
+        margin-bottom: 3rem;
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.18);
+        overflow: hidden;
+      }
+      .hero-content {
+        max-width: 660px;
+      }
+      .hero-eyebrow {
+        color: #fecaca;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+      }
+      .hero-title {
+        color: #ffffff;
+        font-size: 3.4rem;
+        font-weight: 800;
+        line-height: 1.05;
+        margin-bottom: 1rem;
+      }
+      .hero-lead {
+        color: #f8fafc;
+        font-size: 1.3rem;
+        line-height: 1.45;
+        margin-bottom: 1.5rem;
+      }
+      .hero-copy {
+        color: #e2e8f0;
+        font-size: 1rem;
+        line-height: 1.7;
+        margin-top: 1.25rem;
+        max-width: 620px;
+      }
+      .hero-copy strong {
+        color: #ffffff;
+      }
+      .hero-pill-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.65rem;
+        margin-top: 1.75rem;
+      }
+      .hero-pill-grid span {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.24);
+        border-radius: 999px;
+        color: #ffffff;
+        font-size: 0.9rem;
+        font-weight: 600;
+        padding: 0.5rem 0.8rem;
+      }
+      .hero-visual {
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(255, 255, 255, 0.56);
+        border-radius: 8px;
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.28);
+        color: #0f172a;
+        padding: 1rem;
+      }
+      .hero-visual-header {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: #334155;
+        font-size: 0.82rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+      }
+      .status-dot {
+        width: 0.65rem;
+        height: 0.65rem;
+        background-color: #22c55e;
+        border-radius: 999px;
+        box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.14);
+      }
+      .hero-preview-grid {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 0.75rem;
+      }
+      .hero-model-card {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 128px;
+        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        overflow: hidden;
+        padding: 0.65rem;
+      }
+      .model-card-large {
+        grid-row: span 2;
+        min-height: 268px;
+      }
+      .hero-model-card img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        max-height: 250px;
+        object-fit: contain;
+      }
+      .hero-code-panel {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+      }
+      .hero-code-panel code {
+        background: #0f172a;
+        border-radius: 4px;
+        color: #bfdbfe;
+        display: block;
+        font-size: 0.78rem;
+        padding: 0.55rem 0.6rem;
+        text-align: center;
       }
       .is-divider-accent {
         height: 3px;
-        width: 80px;
-        background-color: #fca5a5;
+        width: 96px;
+        background-color: #93c5fd;
         border-radius: 2px;
       }
       .concept-card-blue {
@@ -238,6 +502,57 @@ import { Component } from '@angular/core';
         border-left: 3px solid #b52e31;
       }
       .font-sm {
+        font-size: 0.95rem;
+      }
+      .video-card {
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .video-frame {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        background-color: #0f172a;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+      .video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+      .primitive-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+        gap: 1rem;
+      }
+      .primitive-card {
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+      }
+      .primitive-rendering {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 150px;
+        margin-bottom: 0.75rem;
+        background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+        border-radius: 6px;
+      }
+      .primitive-rendering svg {
+        width: 100%;
+        max-width: 180px;
+        height: auto;
+      }
+      .primitive-card p {
+        color: #475569;
         font-size: 0.95rem;
       }
       .code-card {
@@ -290,6 +605,34 @@ import { Component } from '@angular/core';
       }
       .resource-link {
         padding: 0.5rem;
+      }
+      @media screen and (max-width: 900px) {
+        .hero-gradient {
+          grid-template-columns: 1fr;
+          padding: 3rem 1.75rem;
+        }
+        .hero-title {
+          font-size: 2.6rem;
+        }
+      }
+      @media screen and (max-width: 560px) {
+        .hero-gradient {
+          padding: 2.25rem 1.25rem;
+        }
+        .hero-title {
+          font-size: 2.1rem;
+        }
+        .hero-lead {
+          font-size: 1.08rem;
+        }
+        .hero-preview-grid,
+        .hero-code-panel {
+          grid-template-columns: 1fr;
+        }
+        .model-card-large {
+          grid-row: auto;
+          min-height: 180px;
+        }
       }
     `
   ]

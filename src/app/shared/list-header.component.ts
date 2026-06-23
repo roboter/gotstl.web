@@ -7,20 +7,6 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
       <a router-link="/">
         <h2 class="title">{{title}}</h2>
       </a>
-      <button
-        class="button add-button"
-        (click)="handleAdd()"
-        aria-label="add"
-      >
-        <i class="fas fa-plus" aria-hidden="true"></i>
-      </button>
-      <button
-        class="button refresh-button"
-        (click)="handleRefresh()"
-        aria-label="refresh"
-      >
-        <i class="fas fa-sync" aria-hidden="true"></i>
-      </button>
     </div>
   `
 })
@@ -29,7 +15,7 @@ export class ListHeaderComponent implements OnInit {
   @Output() add = new EventEmitter();
   @Output() refresh = new EventEmitter();
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   handleAdd() {
     this.add.emit();
