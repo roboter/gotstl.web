@@ -186,6 +186,15 @@ export class ProductDetailsComponent implements OnInit {
   onUpdate() {
     this.gProcessor.setJsCad(this.editingProduct.code);
     this.gProcessor.rebuildSolids();
+    setTimeout(() => {
+      if (
+        this.gProcessor &&
+        this.gProcessor.viewer &&
+        typeof this.gProcessor.viewer.handleResize === 'function'
+      ) {
+        this.gProcessor.viewer.handleResize();
+      }
+    }, 100);
   }
 
   sanitizeImageUrl(imageUrl: string): SafeUrl {
