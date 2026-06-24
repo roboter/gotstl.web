@@ -3,7 +3,7 @@
     <div class="hero-gradient">
         <div class="hero-content">
             <p class="hero-eyebrow">Parametric STL Modeling</p>
-            <h1 class="hero-title">GotSTL & OpenJSCAD</h1>
+            <h1 class="hero-title">GotSTL &amp; OpenJSCAD</h1>
             <p class="hero-lead">
                 Build reusable 3D models with JavaScript, tune dimensions in the browser, and export print-ready STL
                 files.
@@ -313,94 +313,19 @@
 
     <!-- Examples Grid -->
     <div class="columns is-multiline modeling-examples">
-        <!-- Example 1 -->
-        <div class="column is-12 mb-5">
+        <div *ngFor="let example of examples" class="column is-12 mb-5">
             <div class="card code-card">
-                <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">example001.jscad</span>
-                    <h3 class="title is-4 mb-2">Sphere With Three Cutouts</h3>
-                    <p class="has-text-grey-darker mb-3">
-                        Start with a sphere, subtract three rotated cylinders, and inspect how CSG removes material.
-                    </p>
-                    <a class="button is-primary is-small" [routerLink]="['/product', 'example001']"
-                        [queryParams]="{ file: 'assets/examples/example001.jscad', name: 'Example 001' }">
-                        <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                        <span>Open in editor</span>
-                    </a>
+                <div class="card-image">
+                    <figure class="image is-4by3">
+                        <img [src]="example.image" [alt]="example.title" class="example-preview-img">
+                    </figure>
                 </div>
-
-            </div>
-        </div>
-
-        <!-- Example 2 -->
-        <div class="column is-12 mb-5">
-            <div class="card code-card">
                 <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">example002.jscad</span>
-                    <h3 class="title is-4 mb-2">Union, Difference, Intersection</h3>
-                    <p class="has-text-grey-darker mb-3">
-                        A compact demonstration of nested boolean operations using cubes and a tapered cylinder.
-                    </p>
-                    <a class="button is-primary is-small" [routerLink]="['/product', 'example002']"
-                        [queryParams]="{ file: 'assets/examples/example002.jscad', name: 'Example 002' }">
-                        <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                        <span>Open in editor</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Example 3 -->
-        <div class="column is-12 mb-5">
-            <div class="card code-card">
-                <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">example003.jscad</span>
-                    <h3 class="title is-4 mb-2">Cross-Shaped Solid</h3>
-                    <p class="has-text-grey-darker mb-3">
-                        Combine centered boxes into a balanced solid, then carve channels from each axis.
-                    </p>
-                    <a class="button is-primary is-small" [routerLink]="['/product', 'example003']"
-                        [queryParams]="{ file: 'assets/examples/example003.jscad', name: 'Example 003' }">
-                        <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                        <span>Open in editor</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Example 4 -->
-        <div class="column is-12 mb-5">
-            <div class="card code-card">
-                <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">example004.jscad</span>
-                    <h3 class="title is-4 mb-2">Cube Minus Sphere</h3>
-                    <p class="has-text-grey-darker mb-3">
-                        The simplest subtractive form: a centered cube with a rounded volume removed from it.
-                    </p>
-                    <a class="button is-primary is-small" [routerLink]="['/product', 'example004']"
-                        [queryParams]="{ file: 'assets/examples/example004.jscad', name: 'Example 004' }">
-                        <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                        <span>Open in editor</span>
-                    </a>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- Example 5 -->
-        <div class="column is-12 mb-5">
-            <div class="card code-card">
-                <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">example005.jscad</span>
-                    <h3 class="title is-4 mb-2">Looped Cylinder Pattern</h3>
-                    <p class="has-text-grey-darker mb-3">
-                        Use a loop to place repeated cylinders around a circular body, then combine them into a larger
-                        assembly.
-                    </p>
-                    <a class="button is-primary is-small" [routerLink]="['/product', 'example005']"
-                        [queryParams]="{ file: 'assets/examples/example005.jscad', name: 'Example 005' }">
+                    <span class="tag is-primary is-light mb-2">{{ example.tag }}</span>
+                    <h3 class="title is-4 mb-2">{{ example.title }}</h3>
+                    <p class="has-text-grey-darker mb-3">{{ example.description }}</p>
+                    <a class="button is-primary is-small"
+                        (click)="openInEditor(example.id, example.tag, example.title)">
                         <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
                         <span>Open in editor</span>
                     </a>
@@ -413,45 +338,13 @@
     <div class="box mt-6 is-light-grey">
         <h3 class="title is-4 mb-3">Useful Resources</h3>
         <div class="columns is-multiline">
-            <div class="column is-3">
+            <div *ngFor="let resource of resources" class="column is-3">
                 <div class="resource-link">
-                    <a href="https://openjscad.xyz/" target="_blank" class="has-text-weight-bold">
+                    <a [href]="resource.url" target="_blank" class="has-text-weight-bold">
                         <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
-                        <span>Official JSCAD Website</span>
+                        <span>{{ resource.name }}</span>
                     </a>
-                    <p class="is-size-7 has-text-grey-dark mt-1">The main hub for OpenJSCAD versions, docs, and news.
-                    </p>
-                </div>
-            </div>
-            <div class="column is-3">
-                <div class="resource-link">
-                    <a href="https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#OpenJSCAD_Programming_Guide"
-                        target="_blank" class="has-text-weight-bold">
-                        <span class="icon is-small mr-1"><i class="fa fa-book" aria-hidden="true"></i></span>
-                        <span>OpenJSCAD Wikibooks Guide</span>
-                    </a>
-                    <p class="is-size-7 has-text-grey-dark mt-1">A user and programming guide covering workflows,
-                        primitives, transforms, and projects.</p>
-                </div>
-            </div>
-            <div class="column is-3">
-                <div class="resource-link">
-                    <a href="https://github.com/jscad/OpenJSCAD.org/wiki" target="_blank" class="has-text-weight-bold">
-                        <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
-                        <span>OpenJSCAD Wiki & Source Code</span>
-                    </a>
-                    <p class="is-size-7 has-text-grey-dark mt-1">Access the community wiki, release timelines, and core
-                        repository.</p>
-                </div>
-            </div>
-            <div class="column is-3">
-                <div class="resource-link">
-                    <a href="https://www.openjscad.xyz/forum.html" target="_blank" class="has-text-weight-bold">
-                        <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
-                        <span>OpenJSCAD User Forum</span>
-                    </a>
-                    <p class="is-size-7 has-text-grey-dark mt-1">Ask questions, share designs, and connect with other
-                        parametric modelers.</p>
+                    <p class="is-size-7 has-text-grey-dark mt-1">{{ resource.description }}</p>
                 </div>
             </div>
         </div>

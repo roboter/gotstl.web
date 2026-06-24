@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   editingProduct: Product;
   public outputFile: string;
   public gProcessor = null;
+  takeScreenshotAfterRender = false;
 
   constructor(
     private http: HttpClient,
@@ -39,8 +40,14 @@ export class ProductDetailsComponent implements OnInit {
     parameterstable.addEventListener('input', triggerUpdate);
     parameterstable.addEventListener('change', triggerUpdate);
 
+    if (this.activatedRoute.snapshot.queryParams.screenshot === 'true') {
+      this.takeScreenshotAfterRender = true;
+    }
+
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.productService.getById(params.id).subscribe((product) => {
+      const queryParams = this.activatedRoute.snapshot.queryParams;
+      const exampleFile = queryParams.file;
+      const loadDesign = (product: Product) => {
         this.editingProduct = product;
         const design = this.editingProduct.file;
         const headers = new HttpHeaders().set(
@@ -57,18 +64,118 @@ export class ProductDetailsComponent implements OnInit {
             this.editingProduct.code = res;
             this.onUpdate();
           });
-      });
+      };
+
+      if (exampleFile) {
+        loadDesign({
+          id: 0,
+          name: queryParams.name || params.id || 'JSCAD example',
+          description: queryParams.description || '',
+          image: '',
+          file: exampleFile,
+          code: '',
+          url: '',
+        });
+        return;
+      }
+
+      this.productService.getById(params.id).subscribe(loadDesign);
     });
 
     this.gProcessor = new gProcessor(viewerDiv, {
       drawLines: true,
       drawFaces: true,
+      viewer: {
+        glOptions: {
+          preserveDrawingBuffer: true,
+        }
+      },
       processor: {
         viewerdiv: viewerDiv,
         setStatus: (e, e1) => {},
         onUpdate: (e, e1) => {
           if (e.outputFile) {
             this.outputFile = e.outputFile.data;
+          }
+          if (this.takeScreenshotAfterRender) {
+            this.takeScreenshotAfterRender = false;
+            setTimeout(() => {
+              const viewer = this.gProcessor.viewer;
+              const processorInstance = this.gProcessor.processor;
+              if (viewer) {
+                let minX = -10, maxX = 10;
+                let minY = -10, maxY = 10;
+                let minZ = -10, maxZ = 10;
+
+                if (processorInstance && processorInstance.viewedObject) {
+                  const viewed = processorInstance.viewedObject;
+                  const solids = Array.isArray(viewed) ? viewed : [viewed];
+                  let hasBounds = false;
+                  solids.forEach((solid) => {
+                    if (solid && typeof solid.getBounds === 'function') {
+                      const bounds = solid.getBounds();
+                      if (bounds && bounds.length === 2 && bounds[0] && bounds[1]) {
+                        if (!hasBounds) {
+                          minX = bounds[0].x; maxX = bounds[1].x;
+                          minY = bounds[0].y; maxY = bounds[1].y;
+                          minZ = bounds[0].z; maxZ = bounds[1].z;
+                          hasBounds = true;
+                        } else {
+                          minX = Math.min(minX, bounds[0].x);
+                          maxX = Math.max(maxX, bounds[1].x);
+                          minY = Math.min(minY, bounds[0].y);
+                          maxY = Math.max(maxY, bounds[1].y);
+                          minZ = Math.min(minZ, bounds[0].z);
+                          maxZ = Math.max(maxZ, bounds[1].z);
+                        }
+                      }
+                    }
+                  });
+                }
+
+                const dx = maxX - minX;
+                const dy = maxY - minY;
+                const dz = maxZ - minZ;
+                const maxDim = Math.max(dx, dy, dz);
+                const diagonal = Math.sqrt(dx * dx + dy * dy + dz * dz);
+                const cx = (minX + maxX) / 2;
+                const cy = (minY + maxY) / 2;
+                const cz = (minZ + maxZ) / 2;
+
+                // Position camera targeting the center of the object
+                viewer.viewpointX = cx;
+                viewer.viewpointY = cy;
+                
+                // Read zoomScale parameter (default: 1.0)
+                const zoomScale = parseFloat(this.activatedRoute.snapshot.queryParams.zoomScale || '1.0');
+                
+                // Adjust zoom distance dynamically based on diagonal and dimensions
+                // Safe fit for tall objects: diagonal * 3.2 or maxDim * 4.5, minimum fallback of 90
+                viewer.viewpointZ = Math.max(diagonal * 3.2, maxDim * 4.5, 90) / zoomScale;
+
+                viewer.angleX = -60;
+                viewer.angleY = 0;
+                viewer.angleZ = -45;
+                viewer.onDraw();
+
+                setTimeout(() => {
+                  const canvas = document.querySelector('#viewerContext canvas') as HTMLCanvasElement;
+                  if (canvas) {
+                    const dataURL = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = 'extrusion_bracket.png';
+                    link.href = dataURL;
+                    link.click();
+
+                    // Put the data URL in a DOM element for the subagent to extract
+                    const debugDiv = document.createElement('div');
+                    debugDiv.id = 'screenshot-data-url';
+                    debugDiv.textContent = dataURL;
+                    document.body.appendChild(debugDiv);
+                  }
+                }, 100);
+              }
+            }, 1500);
           }
         },
         parameterstable: parameterstable,

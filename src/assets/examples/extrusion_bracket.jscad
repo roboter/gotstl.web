@@ -259,7 +259,7 @@ function all_parts(w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes) 
   var pos4 = pos1 * 4;
   var pos5 = pos1 * 5;    
   
-  return [
+  var parts = [
     aluminium_extrusion_bracket("L", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false).translate([pos0, pos0, 0]),
     aluminium_extrusion_bracket("L", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false).translate([pos0, pos1, 0]),
     aluminium_extrusion_bracket("L", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false).translate([pos0, pos2, 0]),
@@ -283,6 +283,13 @@ function all_parts(w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes) 
     aluminium_extrusion_bracket("I", "normal", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false).translate([pos2, pos3, 0]),
     aluminium_extrusion_bracket("I", "long", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false).translate([pos3, pos3, 0])
   ];
+
+  var center_x = (pos5 + l * 2 - w) / 2;
+  var center_y = (pos3 + l) / 2;
+
+  return parts.map(function(part) {
+    return part.translate([-center_x, -center_y, 0]);
+  });
 }
 
 function main(param) {
@@ -296,49 +303,49 @@ function main(param) {
   var holes = parseInt(param.number_of_extra_holes) + 1;
 
   if(param.part == "tiny_straight_bracket__") {
-      return aluminium_extrusion_bracket("I", "tiny", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false);
+      return aluminium_extrusion_bracket("I", "tiny", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", true);
   } else if(param.part == "short_straight_bracket__") {
-      return aluminium_extrusion_bracket("I", "short", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false);
+      return aluminium_extrusion_bracket("I", "short", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", true);
   } else if(param.part == "normal_straight_bracket__") {
-      return aluminium_extrusion_bracket("I", "normal", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false);
+      return aluminium_extrusion_bracket("I", "normal", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", true);
   } else if(param.part == "long_straight_bracket__") {
-      return aluminium_extrusion_bracket("I", "long", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", false);
+      return aluminium_extrusion_bracket("I", "long", "", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "YellowGreen", true);
   } else if(param.part == "short_l_shape_none_support__") {
-      return aluminium_extrusion_bracket("L", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false);
+      return aluminium_extrusion_bracket("L", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", true);
   } else if(param.part == "short_l_shape_half_support__") {
-      return aluminium_extrusion_bracket("L", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false);
+      return aluminium_extrusion_bracket("L", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", true);
   } else if(param.part == "short_l_shape_full_support__") {
-      return aluminium_extrusion_bracket("L", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", false);
+      return aluminium_extrusion_bracket("L", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DimGray", true);
   } else if(param.part == "uniform_l_shape_none_support__") {
-      return aluminium_extrusion_bracket("L", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", false);
+      return aluminium_extrusion_bracket("L", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", true);
   } else if(param.part == "uniform_l_shape_half_support__") {
-      return aluminium_extrusion_bracket("L", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", false);
+      return aluminium_extrusion_bracket("L", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", true);
   } else if(param.part == "uniform_l_shape_full_support__") {
-      return aluminium_extrusion_bracket("L", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", false);
+      return aluminium_extrusion_bracket("L", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DeepSkyBlue", true);
   } else if(param.part == "short_t_shape_none_support__") {
-      return aluminium_extrusion_bracket("T", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", false);
+      return aluminium_extrusion_bracket("T", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", true);
   } else if(param.part == "short_t_shape_half_support__") {
-      return aluminium_extrusion_bracket("T", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", false);
+      return aluminium_extrusion_bracket("T", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", true);
   } else if(param.part == "short_t_shape_full_support__") {
-      return aluminium_extrusion_bracket("T", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", false);
+      return aluminium_extrusion_bracket("T", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "HotPink", true);
   } else if(param.part == "uniform_t_shape_none_support__") {
-      return aluminium_extrusion_bracket("T", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", false);
+      return aluminium_extrusion_bracket("T", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", true);
   } else if(param.part == "uniform_t_shape_half_support__") {
-      return aluminium_extrusion_bracket("T", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", false);
+      return aluminium_extrusion_bracket("T", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", true);
   } else if(param.part == "uniform_t_shape_full_support__") {
-      return aluminium_extrusion_bracket("T", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", false);
+      return aluminium_extrusion_bracket("T", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "DarkOrange", true);
   } else if(param.part == "short_x_shape_none_support__") {
-      return aluminium_extrusion_bracket("X", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", false);
+      return aluminium_extrusion_bracket("X", "short", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", true);
   } else if(param.part == "short_x_shape_half_support__") {
-      return aluminium_extrusion_bracket("X", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", false);
+      return aluminium_extrusion_bracket("X", "short", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", true);
   } else if(param.part == "short_x_shape_full_support__") {
-      return aluminium_extrusion_bracket("X", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", false);
+      return aluminium_extrusion_bracket("X", "short", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "Gold", true);
   } else if(param.part == "uniform_x_shape_none_support__") {
-      return aluminium_extrusion_bracket("X", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", false);
+      return aluminium_extrusion_bracket("X", "uniform", "none", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", true);
   } else if(param.part == "uniform_x_shape_half_support__") {
-      return aluminium_extrusion_bracket("X", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", false);
+      return aluminium_extrusion_bracket("X", "uniform", "half", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", true);
   } else if(param.part == "uniform_x_shape_full_support__") {
-      return aluminium_extrusion_bracket("X", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", false);
+      return aluminium_extrusion_bracket("X", "uniform", "full", w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes, "MediumPurple", true);
   } else {
       return all_parts(w, l, h, rails, hole_d, hole_offset_d, hole_offset_h, holes);
   }

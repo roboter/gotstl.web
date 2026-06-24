@@ -1,0 +1,22 @@
+typing text is problematic rerender causing text input to lose focus, rerender only when user leaves this field
+
+things to add 
+https://www.thingiverse.com/thing:6842317
+https://www.thingiverse.com/search?q=OpenJsCad
+linear extrusion t-slot profiles common make another product with customizable common extrusion profiles t-slot v-slot 10x10 20x20 20x40 differnet lenght
+
+
+this script is sold for 12.95
+I will give it to you for free 
+https://wezhape.com/products/nameplate-generator-openjscad
+
+
+jscad live preview plugin gor VScode 
+https://github.com/danmarshall/jscad-now
+
+upgrade all packages in 2 package.json file
+add a badge fork me on github with a link to github page
+add all other files that in src/assets
+3d view did not fit into corresponding div
+generate extrusion_bracket screenshot
+took styles from https://openjscad.xyz/#
