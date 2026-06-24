@@ -30,9 +30,9 @@ const data = {
       id: 70,
       name: 'Spiral ball bearing chute',
       description: 'A stackable spiral chute for ball bearings.',
-      file: 'assets/jscad/robinsonia/spirall_ball_bearing_chute.jscad',
+      file: 'assets/products/robinsonia/spirall_ball_bearing_chute.jscad',
       url: 'http://robinsonia.com/?tag=3d-printing',
-      image: 'assets/jscad/robinsonia/ball-chute-212x300.jpg',
+      image: 'assets/products/robinsonia/ball-chute-212x300.jpg',
     },
     {
       id: 80,
@@ -106,12 +106,6 @@ const data = {
       name: 'sphere',
       file: 'assets/products/sphere.jscad',
       image: 'assets/products/sphere.png',
-    },
-    {
-      id: 500,
-      name: 's-hook',
-      file: 'assets/products/s-hook.jscad',
-      image: 'assets/products/s-hook.png',
     },
     {
       id: 520,

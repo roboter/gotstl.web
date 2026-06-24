@@ -138,20 +138,14 @@ export class ProductDetailsComponent implements OnInit {
                 viewer.angleZ = -45;
                 viewer.onDraw();
 
-                const canvas = document.querySelector('#viewerContext canvas') as HTMLCanvasElement;
-                if (canvas) {
-                  const dataURL = canvas.toDataURL('image/png');
-                  const link = document.createElement('a');
-                  link.download = 'extrusion_bracket.png';
-                  link.href = dataURL;
-                  link.click();
-
-                  // Put the data URL in a DOM element for the subagent to extract
-                  const debugDiv = document.createElement('div');
-                  debugDiv.id = 'screenshot-data-url';
-                  debugDiv.textContent = dataURL;
-                  document.body.appendChild(debugDiv);
-                }
+                // Wait for the browser to render the frame, then flag Puppeteer
+                requestAnimationFrame(() => {
+                  requestAnimationFrame(() => {
+                    const debugDiv = document.createElement('div');
+                    debugDiv.id = 'screenshot-ready-flag';
+                    document.body.appendChild(debugDiv);
+                  });
+                });
               }
             }, 3000);
           }

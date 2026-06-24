@@ -283,17 +283,16 @@ Examples:
 
         // Wait for screenshot element to appear (which is appended when screenshot is ready)
         console.log('  Waiting for WebGL rendering and screenshot trigger...');
-        await page.waitForSelector('#screenshot-data-url', { timeout: 45000 });
+        await page.waitForSelector('#screenshot-ready-flag', { timeout: 45000 });
+        
+        // Short additional delay to guarantee compositor has drawn the frame
+        await new Promise(r => setTimeout(r, 2000));
 
-        // Extract base64 image data URL
-        const dataURL = await page.$eval('#screenshot-data-url', el => el.textContent);
-        if (!dataURL || !dataURL.startsWith('data:image/png;base64,')) {
-          throw new Error('Invalid or empty screenshot data URL from page.');
+        // Use Puppeteer's native screenshot ability to capture the canvas directly
+        const canvasElement = await page.$('#viewerContext canvas');
+        if (!canvasElement) {
+          throw new Error('Canvas element not found on page.');
         }
-
-        // Decode base64 and write image file
-        const base64Data = dataURL.replace(/^data:image\/png;base64,/, '');
-        const buffer = Buffer.from(base64Data, 'base64');
 
         // Ensure directory exists
         const destDir = path.dirname(outputPngPath);
@@ -301,8 +300,7 @@ Examples:
           fs.mkdirSync(destDir, { recursive: true });
         }
 
-        // Save to source directory
-        fs.writeFileSync(outputPngPath, buffer);
+        await canvasElement.screenshot({ path: outputPngPath });
         console.log(`  [Success] Saved screenshot to: src/assets/products/${outputPngName}`);
 
         // If dist directory exists, save to dist folder as well so server updates immediately
@@ -312,7 +310,7 @@ Examples:
           if (!fs.existsSync(distDestDir)) {
             fs.mkdirSync(distDestDir, { recursive: true });
           }
-          fs.writeFileSync(distPngPath, buffer);
+          fs.copyFileSync(outputPngPath, distPngPath);
           console.log(`  [Success] Saved screenshot to: dist/gotstl/assets/products/${outputPngName}`);
         }
       } catch (err) {
@@ -321,7 +319,9 @@ Examples:
     }
   } finally {
     console.log('[Puppeteer] Closing browser...');
-    await browser.close();
+    if (browser) {
+      browser.close().catch(() => {});
+    }
 
     if (tempServer) {
       console.log('[Server] Stopping temporary server...');

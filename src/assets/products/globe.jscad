@@ -5,7 +5,111 @@
 // date       : 22.12.2013
 // file       : globe.jscad
 
-include ("platonics/maths_geodesic.jscad");
+/*
+   License: This code is placed in the public Domain
+	Contributed By: Willliam A Adams
+	September 2011
+	Adapted for OpenJSCAD.org by Rene K. Mueller, 2013/04/01
+*/
+
+// A couple of useful constants
+Cpi = 3.14159;       // global!
+Cphi = 1.61803399;
+Cepsilon = 0.00000001;
+
+clean = function clean(n) { return (n < 0) ? ((n < -Cepsilon) ? n : 0) : 
+	(n < Cepsilon) ? 0 : n; };
+
+savediv = function safediv(n,d) { return (d==0) ? 0 : n/d; }
+
+DEGREES = function DEGREES(radians) { return (180/Cpi) * radians; }
+RADIANS = function RADIANS(degrees) { return Cpi/180 * degrees; }
+deg = function deg(deg, min, sec) { return [deg, min===undefined?0:min, sec===undefined?0:sec]; }
+deg_to_dec = function deg_to_dec(d) { return d[0] + d[1]/60 + d[2]/60/60; }
+
+sph = function sph(long, lat, rad) { return [long, lat, rad===undefined?1:rad] }
+
+sph_to_cart = function sph_to_cart(s) { 
+   return [
+	clean(s[2]*sin(s[1])*cos(s[0])),  
+	clean(s[2]*sin(s[1])*sin(s[0])),
+	clean(s[2]*cos(s[1]))
+	]; }
+
+sph_from_cart = function sph_from_cart(c) { 
+   return sph(
+	atan2(c[1],c[0]), 
+	atan2(sqrt(c[0]*c[0]+c[1]*c[1]), c[2]), 
+	sqrt(c[0]*c[0]+c[1]*c[1]+c[2]*c[2])
+	); }
+
+sphu_from_cart = function sphu_from_cart(c, rad) { 
+   return sph(
+	atan2(c[1],c[0]), 
+	atan2(sqrt(c[0]*c[0]+c[1]*c[1]), c[2]), 
+	rad===undefined?1:rad
+	); }
+
+sph_dist = function sph_dist(c1, c2) { 
+   return sqrt(
+	c1[2]*c1[2] + c2[2]*c2[2] - 
+	2*c1[2]*c2[2]*
+	((cos(c1[1])*cos(c2[1])) + cos(c1[0]-c2[0])*sin(c1[1])*sin(c2[1]))   
+	); }
+
+function poly_sum_interior_angles(sides) { return (sides-2)*180; }
+function poly_single_interior_angle(pq) { return poly_sum_interior_angles(pq[0])/pq[0]; }
+
+angular_defect = function angular_defect(pq) { return 360 - (poly_single_interior_angle(pq)*pq[1]); }
+plat_deficiency = function plat_deficiency(pq) { return DEGREES(2*Cpi - pq[1]*Cpi*(1-2/pq[0])); }
+
+plat_dihedral = function plat_dihedral(pq) { return 2 * asin( cos(180/pq[1])/sin(180/pq[0])); }
+geo_freq = function geo_freq(xyz) { return xyz[0]+xyz[1]+xyz[2]; }
+geo_tri2_tri3 = function geo_tri2_tri3(xyf) { return [xyf[1], xyf[0]-xyf[1], xyf[2]-xyf[0]]; }
+
+octa_class1 = function octa_class1(c) { 
+   return sph(
+	atan(savediv(c[0], c[1])),
+	atan(sqrt(c[0]*c[0]+c[1]*c[1])/c[2]),
+	1 
+	); }
+
+octa_class2 = function octa_class2(c) { 
+   return sph(
+	atan(c[0]/c[1]),
+	atan( sqrt( 2*(c[0]*c[0]+c[1]*c[1])) /c[2]),
+	1 
+	); }
+
+icosa_class1 = function icosa_class1(c) { 
+   return octa_class1(
+	[
+		c[0]*sin(72),  
+		c[1]+c[0]*cos(72),  
+		geo_freq(c)/2+c[2]/Cphi
+	]); }
+
+icosa_class2 = function icosa_class2(c) { 
+   return sph(
+	atan(c[0]/c[1]), 
+	atan(sqrt(c[0]*c[0]+c[1]*c[1]))/cos(36)*c[2],
+	1
+	); }
+ 
+tetra_class1 = function tetra_class1(c) { 
+   return octa_class1(
+	[
+		sqrt(3*c[0]),  
+		2*c[1]-c[0],  
+		(3*c[2]-c[0]-c[1])/sqrt(2)
+	]); }
+
+class1_icosa_chord_factor = function class1_icosa_chord_factor(v1, v2, freq) { 
+   return sph_dist( 
+		icosa_class1(geo_tri2_tri3( [v1[0], v1[1], freq])),
+		icosa_class1(geo_tri2_tri3( [v2[0], v2[1], freq]))
+	); }
+
 
 // Small scale world data from http://www.naturalearthdata.com converted to GeoJSON with QGIS (http://www.qgis.org/.)
 var Globe = {
