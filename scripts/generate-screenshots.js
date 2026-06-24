@@ -254,8 +254,24 @@ Examples:
     }
   });
 
+  page.on('console', msg => {
+    console.log(`[Browser Console] ${msg.type().toUpperCase()}: ${msg.text()}`);
+  });
+
   // Set a large viewport for high-quality screenshots
   await page.setViewport({ width: 1024, height: 768 });
+
+  // Force all WebGL contexts to preserve their drawing buffer so Puppeteer can reliably screenshot them
+  await page.evaluateOnNewDocument(() => {
+    const originalGetContext = HTMLCanvasElement.prototype.getContext;
+    HTMLCanvasElement.prototype.getContext = function (type, attributes) {
+      if (type === 'webgl' || type === 'experimental-webgl' || type === 'webgl2') {
+        attributes = attributes || {};
+        attributes.preserveDrawingBuffer = true;
+      }
+      return originalGetContext.call(this, type, attributes);
+    };
+  });
 
   try {
     for (let i = 0; i < targetFiles.length; i++) {
