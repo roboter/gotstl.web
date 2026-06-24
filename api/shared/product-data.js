@@ -181,7 +181,7 @@ const data = {
       name: 'EASY_BOX_V1.0',
       description: 'Easy to print customizable storage box',
       file: 'assets/products/micmak/EASY_BOX_V1.0.jscad',
-      image: 'assets/products/EASY_BOX_V1.0.png',
+      image: 'assets/products/micmak/EASY_BOX_V1.0.png',
       tags: ['box', 'storage', 'container', 'easy']
     },
     {
