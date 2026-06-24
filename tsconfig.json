@@ -25,7 +25,6 @@
     "useDefineForClassFields": false,
     "noImplicitAny": true,
     "strictPropertyInitialization": true,
-    "strictNullChecks": true,
-    "ignoreDeprecations": "6.0"
+    "strictNullChecks": true
   }
 }

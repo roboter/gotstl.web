@@ -15,13 +15,13 @@
       <button id="button" (click)="onUpdate()">Update</button>
       <button id="button" (click)="generateOutputFile()">Generate STL</button>
       @if (outputFile) {
-        <a download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)" class="downloadOutputFileLink">download</a>
+      <a download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)" class="downloadOutputFileLink">download</a>
       }
       <textarea rows="14" name="code" [(ngModel)]="editingProduct.code" style="width: 100%;"></textarea>
     </div>
   </div>
   <footer class="card-footer">
     <app-button-footer class="card-footer-item" [className]="'cancel-button'" [iconClasses]="'fas fa-undo'"
-    (clicked)="clear()" label="Cancel" [item]="editingProduct"></app-button-footer>
+      (clicked)="clear()" label="Cancel" [item]="editingProduct"></app-button-footer>
   </footer>
 </div>

@@ -12,13 +12,13 @@ function myLines(l) {
 }
 
 function main() {
-   vectorString(0,0,"This is a test!",myLines);
+   myVectorString(0,0,"This is a test!",myLines);
    return union(o).scale(0.5).translate([-50,0,0]);
 }
 
 // ---------------------------------------------------------------------------------------
 
-function vectorChar(x,y,c,lines) {
+function myVectorChar(x,y,c,lines) {
    c -= 32;
    if(c<0||c>=95) return 0;
 
@@ -40,9 +40,9 @@ function vectorChar(x,y,c,lines) {
    return w;
 }
 
-function vectorString(x,y,s,lines) {
+function myVectorString(x,y,s,lines) {
    for(var i=0; i<s.length; i++) {
-      x += vectorChar(x,y,s.charCodeAt(i),lines);
+      x += myVectorChar(x,y,s.charCodeAt(i),lines);
    }
 }
 

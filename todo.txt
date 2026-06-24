@@ -10,10 +10,7 @@ this script is sold for 12.95
 I will give it to you for free 
 https://wezhape.com/products/nameplate-generator-openjscad
 
-
 jscad live preview plugin gor VScode 
 https://github.com/danmarshall/jscad-now
 
-
-generate extrusion_bracket screenshot
 took styles from https://openjscad.xyz/#

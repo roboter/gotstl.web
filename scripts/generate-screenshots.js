@@ -169,7 +169,7 @@ Examples:
   }
 
   const processAll = args.includes('--all') || !fileNames.length;
-  
+
   // Collect target files
   let targetFiles = [];
   if (processAll) {
@@ -227,7 +227,7 @@ Examples:
   });
 
   const page = await browser.newPage();
-  
+
   // Log page console messages
   page.on('console', msg => {
     if (verbose) {
@@ -272,18 +272,18 @@ Examples:
       }
 
       console.log(`[Process] [${i + 1}/${targetFiles.length}] Rendering: ${relativePath}...`);
-      
+
       // Construct URL to open the specific jscad file
       // We pass the file path relative to assets and the zoomScale parameter
       const fileParam = `assets/products/${relativePath.replace(/\\/g, '/')}`;
       const url = `${baseUrl}/product/0?file=${encodeURIComponent(fileParam)}&screenshot=true&zoomScale=${zoomScale}`;
 
       try {
-        await page.goto(url, { waitUntil: 'networkidle0', timeout: 30000 });
+        await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
 
         // Wait for screenshot element to appear (which is appended when screenshot is ready)
         console.log('  Waiting for WebGL rendering and screenshot trigger...');
-        await page.waitForSelector('#screenshot-data-url', { timeout: 15000 });
+        await page.waitForSelector('#screenshot-data-url', { timeout: 45000 });
 
         // Extract base64 image data URL
         const dataURL = await page.$eval('#screenshot-data-url', el => el.textContent);
@@ -294,7 +294,7 @@ Examples:
         // Decode base64 and write image file
         const base64Data = dataURL.replace(/^data:image\/png;base64,/, '');
         const buffer = Buffer.from(base64Data, 'base64');
-        
+
         // Ensure directory exists
         const destDir = path.dirname(outputPngPath);
         if (!fs.existsSync(destDir)) {

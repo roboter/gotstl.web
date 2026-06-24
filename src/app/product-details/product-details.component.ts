@@ -75,10 +75,13 @@ export class ProductDetailsComponent implements OnInit {
             this.outputFile = e.outputFile.data;
           }
           if (this.takeScreenshotAfterRender) {
-            this.takeScreenshotAfterRender = false;
-            setTimeout(() => {
-              const viewer = this.gProcessor!.viewer;
+            if ((this as any).screenshotTimer) clearTimeout((this as any).screenshotTimer);
+            (this as any).screenshotTimer = setTimeout(() => {
+              this.takeScreenshotAfterRender = false;
               const processorInstance = this.gProcessor!.processor;
+              if (!processorInstance || !processorInstance.viewedObject) return;
+              
+              const viewer = this.gProcessor!.viewer;
               if (viewer) {
                 let minX = -10, maxX = 10;
                 let minY = -10, maxY = 10;
@@ -150,9 +153,9 @@ export class ProductDetailsComponent implements OnInit {
                     debugDiv.textContent = dataURL;
                     document.body.appendChild(debugDiv);
                   }
-                }, 100);
+                }, 1500);
               }
-            }, 1500);
+            }, 3000);
           }
         },
         parameterstable: parameterstable,
