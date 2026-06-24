@@ -328,6 +328,7 @@ Examples:
       tempServer.close();
     }
     console.log('[Finished] Screenshot generation completed.');
+    process.exit(0);
   }
 }
 

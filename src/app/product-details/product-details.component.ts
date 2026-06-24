@@ -138,22 +138,20 @@ export class ProductDetailsComponent implements OnInit {
                 viewer.angleZ = -45;
                 viewer.onDraw();
 
-                setTimeout(() => {
-                  const canvas = document.querySelector('#viewerContext canvas') as HTMLCanvasElement;
-                  if (canvas) {
-                    const dataURL = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.download = 'extrusion_bracket.png';
-                    link.href = dataURL;
-                    link.click();
+                const canvas = document.querySelector('#viewerContext canvas') as HTMLCanvasElement;
+                if (canvas) {
+                  const dataURL = canvas.toDataURL('image/png');
+                  const link = document.createElement('a');
+                  link.download = 'extrusion_bracket.png';
+                  link.href = dataURL;
+                  link.click();
 
-                    // Put the data URL in a DOM element for the subagent to extract
-                    const debugDiv = document.createElement('div');
-                    debugDiv.id = 'screenshot-data-url';
-                    debugDiv.textContent = dataURL;
-                    document.body.appendChild(debugDiv);
-                  }
-                }, 1500);
+                  // Put the data URL in a DOM element for the subagent to extract
+                  const debugDiv = document.createElement('div');
+                  debugDiv.id = 'screenshot-data-url';
+                  debugDiv.textContent = dataURL;
+                  document.body.appendChild(debugDiv);
+                }
               }
             }, 3000);
           }
