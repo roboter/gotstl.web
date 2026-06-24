@@ -44,50 +44,20 @@ export class ProductDetailsComponent implements OnInit {
       }, 150);
     };
 
-    parameterstable?.addEventListener('input', triggerUpdate);
+    const triggerUpdateOnInput = (e: Event) => {
+      const target = e.target as HTMLInputElement;
+      if (target && (target.type === 'text' || target.type === 'number')) {
+        return; // Wait for the 'change' event (blur) for text inputs
+      }
+      triggerUpdate();
+    };
+
+    parameterstable?.addEventListener('input', triggerUpdateOnInput);
     parameterstable?.addEventListener('change', triggerUpdate);
 
     if (this.activatedRoute.snapshot.queryParams.screenshot === 'true') {
       this.takeScreenshotAfterRender = true;
     }
-
-    this.activatedRoute.params.subscribe((params: Params) => {
-      const queryParams = this.activatedRoute.snapshot.queryParams;
-      const exampleFile = queryParams.file;
-      const loadDesign = (product: Product) => {
-        this.editingProduct = product;
-        const design = this.editingProduct.file;
-        const headers = new HttpHeaders().set(
-          'Content-Type',
-          'text/plain; charset=utf-8',
-        );
-
-        viewerDiv?.setAttribute('design-url', this.editingProduct.file);
-        this.http
-          .get(design, { headers, responseType: 'text' })
-          .subscribe((res: string) => {
-            this.editingProduct = product;
-
-            this.editingProduct.code = res;
-            this.onUpdate();
-          });
-      };
-
-      if (exampleFile) {
-        loadDesign({
-          id: 0,
-          name: queryParams.name || params.id || 'JSCAD example',
-          description: queryParams.description || '',
-          image: '',
-          file: exampleFile,
-          code: '',
-          url: '',
-        });
-        return;
-      }
-
-      this.productService.getById(params.id).subscribe(loadDesign);
-    });
 
     this.gProcessor = new gProcessor(viewerDiv, {
       drawLines: true,
@@ -187,6 +157,44 @@ export class ProductDetailsComponent implements OnInit {
         },
         parameterstable: parameterstable,
       },
+    });
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      const queryParams = this.activatedRoute.snapshot.queryParams;
+      const exampleFile = queryParams.file;
+      const loadDesign = (product: Product) => {
+        this.editingProduct = product;
+        const design = this.editingProduct.file;
+        const headers = new HttpHeaders().set(
+          'Content-Type',
+          'text/plain; charset=utf-8',
+        );
+
+        viewerDiv?.setAttribute('design-url', this.editingProduct.file);
+        this.http
+          .get(design, { headers, responseType: 'text' })
+          .subscribe((res: string) => {
+            this.editingProduct = product;
+
+            this.editingProduct.code = res;
+            this.onUpdate();
+          });
+      };
+
+      if (exampleFile) {
+        loadDesign({
+          id: 0,
+          name: queryParams.name || params.id || 'JSCAD example',
+          description: queryParams.description || '',
+          image: '',
+          file: exampleFile,
+          code: '',
+          url: '',
+        });
+        return;
+      }
+
+      this.productService.getById(params.id).subscribe(loadDesign);
     });
   }
 

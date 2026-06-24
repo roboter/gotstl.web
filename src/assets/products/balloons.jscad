@@ -87,8 +87,8 @@ function main( p ) {
     p.resolution = 32;
 // use the checkbox to determine the size of the sphere
     p.b_radius = 10;
-    if(p.checkbox !== false) {
-        p.b_radius = parseInt(p.checkbox);
+    if(p.checkbox === true || p.checkbox === '20' || p.checkbox === 'true') {
+        p.b_radius = 20;
     }
 // use the color chooser to determine the color of the sphere
     if(p.color.length == 7) {

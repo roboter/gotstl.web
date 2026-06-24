@@ -4,8 +4,8 @@ const http = require('http');
 const puppeteer = require('puppeteer');
 
 // Configurations
-const EXAMPLES_SRC_DIR = path.join(__dirname, '..', 'src', 'assets', 'examples');
-const EXAMPLES_DIST_DIR = path.join(__dirname, '..', 'dist', 'gotstl', 'assets', 'examples');
+const EXAMPLES_SRC_DIR = path.join(__dirname, '..', 'src', 'assets', 'products');
+const EXAMPLES_DIST_DIR = path.join(__dirname, '..', 'dist', 'gotstl', 'assets', 'products');
 const DIST_DIR = path.join(__dirname, '..', 'dist', 'gotstl');
 const DEFAULT_DEV_URL = 'http://localhost:4200';
 const TEMP_SERVER_PORT = 8080;
@@ -222,11 +222,7 @@ Examples:
     headless: 'new',
     args: [
       '--no-sandbox',
-      '--disable-setuid-sandbox',
-      '--disable-gpu',
-      '--use-gl=angle',
-      '--use-gl=swiftshader',
-      '--ignore-gpu-blocklist'
+      '--disable-setuid-sandbox'
     ]
   });
 
@@ -279,7 +275,7 @@ Examples:
       
       // Construct URL to open the specific jscad file
       // We pass the file path relative to assets and the zoomScale parameter
-      const fileParam = `assets/examples/${relativePath.replace(/\\/g, '/')}`;
+      const fileParam = `assets/products/${relativePath.replace(/\\/g, '/')}`;
       const url = `${baseUrl}/product/0?file=${encodeURIComponent(fileParam)}&screenshot=true&zoomScale=${zoomScale}`;
 
       try {
@@ -307,7 +303,7 @@ Examples:
 
         // Save to source directory
         fs.writeFileSync(outputPngPath, buffer);
-        console.log(`  [Success] Saved screenshot to: src/assets/examples/${outputPngName}`);
+        console.log(`  [Success] Saved screenshot to: src/assets/products/${outputPngName}`);
 
         // If dist directory exists, save to dist folder as well so server updates immediately
         if (fs.existsSync(DIST_DIR)) {
@@ -317,7 +313,7 @@ Examples:
             fs.mkdirSync(distDestDir, { recursive: true });
           }
           fs.writeFileSync(distPngPath, buffer);
-          console.log(`  [Success] Saved screenshot to: dist/gotstl/assets/examples/${outputPngName}`);
+          console.log(`  [Success] Saved screenshot to: dist/gotstl/assets/products/${outputPngName}`);
         }
       } catch (err) {
         console.error(`  [Failed] Error rendering ${relativePath}: ${err.message}`);

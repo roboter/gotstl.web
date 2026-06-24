@@ -11,8 +11,15 @@ module.exports = async function (context, req) {
 
   try {
     const updatedProduct = data.updateProduct(product);
-    context.res.status(200).json(updatedProduct);
+    context.res = {
+      status: 200,
+      body: updatedProduct,
+      headers: { 'Content-Type': 'application/json' }
+    };
   } catch (error) {
-    context.res.status(500).send(error);
+    context.res = {
+      status: 500,
+      body: error
+    };
   }
 };

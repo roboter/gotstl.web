@@ -44,6 +44,13 @@ import { Component } from '@angular/core';
           </div>
         </div>
       </nav>
+      <a href="https://github.com/roboter/gotstl.web" target="_blank" rel="noopener noreferrer">
+        <img
+          style="position: absolute; top: 0; right: 0; border: 0; z-index: 100;"
+          src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png"
+          alt="Fork me on GitHub"
+        />
+      </a>
     </header>
   `,
 })
