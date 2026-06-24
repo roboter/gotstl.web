@@ -1,21 +1,28 @@
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../core';
 import { ProductService } from '../products/product.service';
 
+// @ts-ignore
 import * as gProcessor from '@jwc/jscad-web';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule, FormsModule],
+
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
 export class ProductDetailsComponent implements OnInit {
-  editingProduct: Product;
-  public outputFile: string;
-  public gProcessor = null;
+  editingProduct!: Product;
+  public outputFile!: string;
+  public gProcessor: any = null;
   takeScreenshotAfterRender = false;
 
   constructor(
@@ -29,7 +36,7 @@ export class ProductDetailsComponent implements OnInit {
     const viewerDiv = document.getElementById('viewerContext');
     const parameterstable = document.getElementById('parameterstable');
 
-    let debounceTimer;
+    let debounceTimer: any;
     const triggerUpdate = () => {
       clearTimeout(debounceTimer);
       debounceTimer = setTimeout(() => {
@@ -37,8 +44,8 @@ export class ProductDetailsComponent implements OnInit {
       }, 150);
     };
 
-    parameterstable.addEventListener('input', triggerUpdate);
-    parameterstable.addEventListener('change', triggerUpdate);
+    parameterstable?.addEventListener('input', triggerUpdate);
+    parameterstable?.addEventListener('change', triggerUpdate);
 
     if (this.activatedRoute.snapshot.queryParams.screenshot === 'true') {
       this.takeScreenshotAfterRender = true;
@@ -55,7 +62,7 @@ export class ProductDetailsComponent implements OnInit {
           'text/plain; charset=utf-8',
         );
 
-        viewerDiv.setAttribute('design-url', this.editingProduct.file);
+        viewerDiv?.setAttribute('design-url', this.editingProduct.file);
         this.http
           .get(design, { headers, responseType: 'text' })
           .subscribe((res: string) => {
@@ -92,16 +99,16 @@ export class ProductDetailsComponent implements OnInit {
       },
       processor: {
         viewerdiv: viewerDiv,
-        setStatus: (e, e1) => {},
-        onUpdate: (e, e1) => {
+        setStatus: (e: any, e1: any) => {},
+        onUpdate: (e: any, e1: any) => {
           if (e.outputFile) {
             this.outputFile = e.outputFile.data;
           }
           if (this.takeScreenshotAfterRender) {
             this.takeScreenshotAfterRender = false;
             setTimeout(() => {
-              const viewer = this.gProcessor.viewer;
-              const processorInstance = this.gProcessor.processor;
+              const viewer = this.gProcessor!.viewer;
+              const processorInstance = this.gProcessor!.processor;
               if (viewer) {
                 let minX = -10, maxX = 10;
                 let minY = -10, maxY = 10;
@@ -184,15 +191,15 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onUpdate() {
-    this.gProcessor.setJsCad(this.editingProduct.code);
-    this.gProcessor.rebuildSolids();
+    this.gProcessor!.setJsCad(this.editingProduct.code);
+    this.gProcessor!.rebuildSolids();
     setTimeout(() => {
       if (
         this.gProcessor &&
-        this.gProcessor.viewer &&
-        typeof this.gProcessor.viewer.handleResize === 'function'
+        this.gProcessor!.viewer &&
+        typeof this.gProcessor!.viewer.handleResize === 'function'
       ) {
-        this.gProcessor.viewer.handleResize();
+        this.gProcessor!.viewer.handleResize();
       }
     }, 100);
   }
@@ -202,7 +209,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   generateOutputFile() {
-    this.gProcessor.generateOutputFile({
+    this.gProcessor!.generateOutputFile({
       name: 'stl',
       displayName: 'STL (Binary)',
       description: 'STereoLithography, Binary',

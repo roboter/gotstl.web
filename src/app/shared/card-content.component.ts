@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+
   selector: 'app-card-content',
   template: `
     <div class="card-content">
@@ -12,8 +17,8 @@ import { Component, OnInit, Input } from '@angular/core';
   `
 })
 export class CardContentComponent implements OnInit {
-  @Input() name;
-  @Input() description;
+  @Input() name!: string;
+  @Input() description!: string;
 
   ngOnInit() {}
 }

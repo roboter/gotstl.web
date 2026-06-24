@@ -10,7 +10,19 @@ $link: $primary; // #00b3e6; // #ff4081;
 
 $shade-light: #fafafa;
 
-@import 'bulma/bulma.sass';
+@import 'bulma/bulma.scss';
+
+:root {
+  --bulma-link: #{$link};
+  --bulma-link-text: #{$link};
+}
+
+a {
+  color: var(--bulma-link-text, $link);
+  &:hover {
+    color: darken($link, 10%);
+  }
+}
 
 .menu-list .router-link-active {
   color: #fff;
@@ -36,21 +48,21 @@ header {
   span {
     letter-spacing: 0px;
     &.brand-first {
-      color: #fff;
+      color: #fff !important;
     }
     &.brand-second {
-      color: #ccc;
+      color: #ccc !important;
     }
     &.brand-third {
-      color: $primary-light;
+      color: $primary-light !important;
     }
   }
   .navbar-item.nav-home {
     border: 3px solid transparent;
     border-radius: 0%;
     &:hover {
-      border-right: 3px solid $primary-light;
-      border-left: 3px solid $primary-light;
+      border-right: 3px solid $primary-light !important;
+      border-left: 3px solid $primary-light !important;
     }
   }
   .fab {

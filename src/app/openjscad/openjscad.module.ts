@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SharedModule } from '../shared/shared.module';
+
 import { OpenjscadComponent } from './openjscad.component';
 
 const routes: Routes = [
@@ -12,8 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, RouterModule.forChild(routes), SharedModule],
-  exports: [RouterModule, OpenjscadComponent],
-  declarations: [OpenjscadComponent],
+    imports: [CommonModule, RouterModule.forChild(routes), OpenjscadComponent],
+    exports: [RouterModule, OpenjscadComponent],
 })
 export class OpenjscadModule {}

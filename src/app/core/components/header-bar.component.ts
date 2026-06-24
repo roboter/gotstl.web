@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+
   selector: 'app-header-bar',
   template: `
     <header>
@@ -11,9 +16,9 @@ import { Component } from '@angular/core';
       >
         <div class="navbar-brand">
           <a class="navbar-item nav-home" routerLink="/">
-            <span class="brand-first">GOT</span>
-            <span class="brand-second">STL</span>
-            <span class="brand-third">.COM</span>
+            <span class="brand-wrapper">
+              <span class="brand-first">GOT</span><span class="brand-second">STL</span><span class="brand-third">.COM</span>
+            </span>
           </a>
           <a
             role="button"

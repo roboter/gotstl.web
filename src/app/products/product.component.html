@@ -1,14 +1,20 @@
 <div class="content-container">
-    <app-list-header title="Products" (add)="enableAddMode()" (refresh)="getProducts()"></app-list-header>
-    <div class="columns is-multiline is-variable">
-        <div class="column is-8" *ngIf="products$ | async as products">
-            <app-product-list *ngIf="!selected" [products]="products" (selected)="select($event)"
-                (deleted)="askToDelete($event)"></app-product-list>
-            <app-product-detail *ngIf="selected" [product]="selected" (unselect)="clear()">
-            </app-product-detail>
-        </div>
-    </div>
+  <app-list-header title="Products" (add)="enableAddMode()" (refresh)="getProducts()"></app-list-header>
+  <div class="columns is-multiline is-variable">
+    @if (products$ | async; as products) {
+      <div class="column is-12">
+        @if (!selected) {
+          <app-product-list [products]="products" (selected)="select($event)"
+          (deleted)="askToDelete($event)"></app-product-list>
+        }
+        @if (selected) {
+          <app-product-detail [product]="selected" (unselect)="clear()">
+          </app-product-detail>
+        }
+      </div>
+    }
+  </div>
 
-    <app-modal class="modal-product" [message]="message" [isOpen]="showModal" (handleNo)="closeModal()"
-        (handleYes)="deleteProduct()"></app-modal>
+  <app-modal class="modal-product" [message]="message" [isOpen]="showModal" (handleNo)="closeModal()"
+  (handleYes)="deleteProduct()"></app-modal>
 </div>

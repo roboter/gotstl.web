@@ -1,22 +1,25 @@
-<div *ngIf="!products?.length">
-  Loading data ...
-</div>
+@if (!products?.length) {
+  <div>
+    Loading data ...
+  </div>
+}
 <section class="section product-list-section">
   <div class="product-list-layout">
     <div class="product-grid">
-      <div class="card" *ngFor="let product of products; trackBy: trackByProduct; let i = index">
-
-        <div class="card-image">
-          <figure class="image is-4by3">
-            <img [src]="product.image" [alt]="product.name">
-          </figure>
-        </div>
-        <app-card-content [name]="product.name" [description]="product.description"></app-card-content>
-        <footer class="card-footer">
-          <app-button-footer class="card-footer-item" [routerLink]="['/product', product.id]" [className]="'edit-item'"
+      @for (product of products; track trackByProduct(i, product); let i = $index) {
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img [src]="product.image" [alt]="product.name">
+            </figure>
+          </div>
+          <app-card-content [name]="product.name" [description]="product.description"></app-card-content>
+          <footer class="card-footer">
+            <app-button-footer class="card-footer-item" [routerLink]="['/product', product.id]" [className]="'edit-item'"
             [iconClasses]="'fas fa-edit'" label="View" [item]="product"></app-button-footer>
-        </footer>
-      </div>
+          </footer>
+        </div>
+      }
     </div>
 
     <aside class="resource-links-column">
@@ -45,7 +48,7 @@
             <span>OpenJSCAD User Forum</span>
           </a>
           <p class="is-size-7 has-text-grey-dark mt-1">Ask questions, share designs, and connect with other
-            parametric modelers.</p>
+          parametric modelers.</p>
         </div>
         <div class="resource-link">
           <a href="https://joostn.github.io/OpenJsCad/" target="_blank" class="has-text-weight-bold">
@@ -62,7 +65,7 @@
             <span>Facebook Group</span>
           </a>
           <p class="is-size-7 has-text-grey-dark mt-1">Join the GotSTL community for examples, questions, and shared
-            projects.</p>
+          projects.</p>
         </div>
 
         <div class="resource-link">
@@ -71,7 +74,7 @@
             <span>ImplicitCAD</span>
           </a>
           <p class="is-size-7 has-text-grey-dark mt-1">Explore another code-driven CAD tool for procedural solid
-            modeling.</p>
+          modeling.</p>
         </div>
 
         <div class="resource-link">
@@ -99,7 +102,7 @@
             <span>Raspberry Pi Case</span>
           </a>
           <p class="is-size-7 has-text-grey-dark mt-1">Read a project walkthrough that turns JavaScript modeling into a
-            physical tablet case.</p>
+          physical tablet case.</p>
         </div>
       </div>
     </aside>

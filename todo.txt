@@ -17,6 +17,6 @@ https://github.com/danmarshall/jscad-now
 upgrade all packages in 2 package.json file
 add a badge fork me on github with a link to github page
 add all other files that in src/assets
-3d view did not fit into corresponding div
+
 generate extrusion_bracket screenshot
 took styles from https://openjscad.xyz/#

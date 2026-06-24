@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+
   selector: 'app-list-header',
   template: `
     <div class="content-title-group">
@@ -11,7 +16,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
   `
 })
 export class ListHeaderComponent implements OnInit {
-  @Input() title: string;
+  @Input() title!: string;
   @Output() add = new EventEmitter();
   @Output() refresh = new EventEmitter();
 

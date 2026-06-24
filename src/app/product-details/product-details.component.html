@@ -1,9 +1,11 @@
 <div class="card edit-detail">
-  <header *ngIf="editingProduct" class="card-header">
-    <p class="card-header-title">
-      {{ editingProduct.name }}
-    </p>
-  </header>
+  @if (editingProduct) {
+    <header class="card-header">
+      <p class="card-header-title">
+        {{ editingProduct.name }}
+      </p>
+    </header>
+  }
   <div class="card-content">
     <div class="columns is-desktop">
       <!-- Left Column: Parameters & Code Editor -->
@@ -16,7 +18,7 @@
         <div class="field mt-4">
           <label class="label font-label">JavaScript Code Editor</label>
           <div class="control">
-            <textarea class="textarea code-textarea" id="code" [(ngModel)]="editingProduct.code" (input)="onUpdate()"></textarea>
+            <textarea class="textarea code-textarea" id="code" [(ngModel)]="editingProduct.code" (change)="onUpdate()"></textarea>
           </div>
         </div>
       </div>
@@ -37,10 +39,12 @@
           <div class="control">
             <button class="button is-info" (click)="generateOutputFile()">Generate STL</button>
           </div>
-          <div class="control" *ngIf="outputFile">
-            <a download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)"
+          @if (outputFile) {
+            <div class="control">
+              <a download="openjscad.stl" [href]="sanitizeImageUrl(outputFile)"
               class="button is-link is-light">Download STL</a>
-          </div>
+            </div>
+          }
         </div>
       </div>
     </div>

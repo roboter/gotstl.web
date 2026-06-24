@@ -1,3 +1,7 @@
+import { ButtonFooterComponent } from '../shared/button-footer.component';
+import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {
   Component,
@@ -12,24 +16,28 @@ import {
   SafeResourceUrl,
   SafeUrl,
 } from '@angular/platform-browser';
+// @ts-ignore
 import * as gProcessor from '@jwc/jscad-web';
 import { Product } from '../core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule, ButtonFooterComponent, FormsModule],
+
   selector: 'app-product-detail',
   templateUrl: 'product-detail.component.html',
   styleUrls: ['product-detail.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProductDetailComponent implements OnInit {
-  @Input() product: Product;
+  @Input() product!: Product | null;
   @Output() unselect = new EventEmitter<string>();
   @Output() save = new EventEmitter<Product>();
 
   addMode = false;
-  editingProduct: Product;
-  public gProcessor = null;
-  sanitizedURL: SafeResourceUrl;
+  editingProduct!: Product;
+  public gProcessor: any = null;
+  sanitizedURL!: SafeResourceUrl;
   public outputFile: any;
 
   constructor(private http: HttpClient, private sanitizer: DomSanitizer) { }
@@ -52,18 +60,18 @@ export class ProductDetailComponent implements OnInit {
           this.save.emit(this.editingProduct);
         });
 
-      viewerDiv.setAttribute('design-url', this.editingProduct.file);
+      viewerDiv?.setAttribute('design-url', this.editingProduct.file);
 
       this.gProcessor = new gProcessor(viewerDiv, {
         drawLines: true,
         drawFaces: true,
         processor: {
           viewerdiv: viewerDiv,
-          setStatus: (e, e1) => {
+          setStatus: (e: any, e1: any) => {
             console.table(e);
             console.table(e1);
           },
-          onUpdate: (e, e1) => {
+          onUpdate: (e: any, e1: any) => {
             if (e.outputFile) {
               this.outputFile = e.outputFile.data;
             }
@@ -73,7 +81,7 @@ export class ProductDetailComponent implements OnInit {
       });
     } else {
       this.editingProduct = {
-        id: undefined,
+        id: 0,
         name: '',
         description: '',
         image: '',
@@ -95,8 +103,8 @@ export class ProductDetailComponent implements OnInit {
   }
 
   onUpdate() {
-    this.gProcessor.setJsCad(this.editingProduct.code);
-    this.gProcessor.rebuildSolids();
+    this.gProcessor!.setJsCad(this.editingProduct.code);
+    this.gProcessor!.rebuildSolids();
   }
 
   sanitizeImageUrl(imageUrl: string): SafeUrl {
@@ -104,7 +112,7 @@ export class ProductDetailComponent implements OnInit {
   }
 
   generateOutputFile() {
-    this.gProcessor.generateOutputFile({
+    this.gProcessor!.generateOutputFile({
       name: 'stl',
       displayName: 'STL (Binary)',
       description: 'STereoLithography, Binary',

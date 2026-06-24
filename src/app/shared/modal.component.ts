@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+
   selector: 'app-modal',
   template: `
     <div class="modal" [ngClass]="{ 'is-active': this.isOpen }">
@@ -21,7 +26,7 @@ import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
   `
 })
 export class ModalComponent implements OnInit {
-  @Input() message;
+  @Input() message!: string;
   @Input() isOpen = false;
   @Output() handleYes = new EventEmitter();
   @Output() handleNo = new EventEmitter();

@@ -1,6 +1,11 @@
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
+  standalone: true,
+  imports: [CommonModule, RouterModule],
+
   selector: 'app-button-footer',
   template: `
     <button
@@ -16,11 +21,11 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   `
 })
 export class ButtonFooterComponent implements OnInit {
-  @Input() label;
-  @Input() className;
-  @Input() iconClasses;
-  @Input() item;
-  @Input() dataId;
+  @Input() label!: string;
+  @Input() className!: string;
+  @Input() iconClasses!: string;
+  @Input() item: any;
+  @Input() dataId: any;
 
   @Output() clicked = new EventEmitter<any>();
 

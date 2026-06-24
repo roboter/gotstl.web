@@ -1,352 +1,356 @@
 <div class="container guide-container">
-    <!-- Premium Hero Section -->
-    <div class="hero-gradient">
-        <div class="hero-content">
-            <p class="hero-eyebrow">Parametric STL Modeling</p>
-            <h1 class="hero-title">GotSTL &amp; OpenJSCAD</h1>
-            <p class="hero-lead">
-                Build reusable 3D models with JavaScript, tune dimensions in the browser, and export print-ready STL
-                files.
-            </p>
-            <div class="is-divider-accent"></div>
-            <p class="hero-copy">
-                GotSTL pairs a curated model gallery with <strong>OpenJSCAD</strong>, a browser-native geometry engine
-                that turns code into precise 3D parts.
-                Define shapes mathematically, expose the important dimensions as parameters, and generate model
-                variations instantly.
-            </p>
+  <!-- Premium Hero Section -->
+  <div class="hero-gradient">
+    <div class="hero-content">
+      <p class="hero-eyebrow">Parametric STL Modeling</p>
+      <h1 class="hero-title">GotSTL &amp; OpenJSCAD</h1>
+      <p class="hero-lead">
+        Build reusable 3D models with JavaScript, tune dimensions in the browser, and export print-ready STL
+        files.
+      </p>
+      <div class="is-divider-accent"></div>
+      <p class="hero-copy">
+        GotSTL pairs a curated model gallery with <strong>OpenJSCAD</strong>, a browser-native geometry engine
+        that turns code into precise 3D parts.
+        Define shapes mathematically, expose the important dimensions as parameters, and generate model
+        variations instantly.
+      </p>
 
-            <div class="hero-pill-grid">
-                <span><i class="fa fa-code" aria-hidden="true"></i> Script-driven CAD</span>
-                <span><i class="fa fa-sliders" aria-hidden="true"></i> Parametric controls</span>
-                <span><i class="fa fa-download" aria-hidden="true"></i> STL export</span>
-            </div>
-        </div>
-
-        <div class="hero-visual" aria-label="Rendered OpenJSCAD model previews">
-            <div class="hero-visual-header">
-                <span class="status-dot"></span>
-                <span>Live geometry preview</span>
-            </div>
-            <div class="hero-preview-grid">
-                <div class="hero-model-card model-card-large">
-                    <img src="assets/examples/extrusion_bracket.png" alt="Extrusion bracket rendering">
-                </div>
-                <div class="hero-model-card">
-                    <img src="assets/examples/gear.png" alt="Gear rendering">
-                </div>
-                <div class="hero-model-card">
-                    <img src="assets/examples/logo.png" alt="OpenJSCAD logo rendering">
-                </div>
-            </div>
-            <div class="hero-code-panel">
-                <code>width = 60</code>
-                <code>holes = 4</code>
-                <code>export: STL</code>
-            </div>
-        </div>
+      <div class="hero-pill-grid">
+        <span><i class="fa fa-code" aria-hidden="true"></i> Script-driven CAD</span>
+        <span><i class="fa fa-sliders" aria-hidden="true"></i> Parametric controls</span>
+        <span><i class="fa fa-download" aria-hidden="true"></i> STL export</span>
+      </div>
     </div>
 
-    <!-- Video Section -->
-    <div class="card video-card mb-6">
+    <div class="hero-visual" aria-label="Rendered OpenJSCAD model previews">
+      <div class="hero-visual-header">
+        <span class="status-dot"></span>
+        <span>Live geometry preview</span>
+      </div>
+      <div class="hero-preview-grid">
+        <div class="hero-model-card model-card-large">
+          <img src="assets/examples/extrusion_bracket.png" alt="Extrusion bracket rendering">
+        </div>
+        <div class="hero-model-card">
+          <img src="assets/examples/gear.png" alt="Gear rendering">
+        </div>
+        <div class="hero-model-card">
+          <img src="assets/examples/logo.png" alt="OpenJSCAD logo rendering">
+        </div>
+      </div>
+      <div class="hero-code-panel">
+        <code>width = 60</code>
+        <code>holes = 4</code>
+        <code>export: STL</code>
+      </div>
+    </div>
+  </div>
+
+  <!-- Video Section -->
+  <div class="card video-card mb-6">
+    <div class="card-content">
+      <div class="content-title-group mb-4">
+        <h2 class="title is-3">Video Introduction</h2>
+      </div>
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/T9IfF_1Y4z8" title="GotSTL OpenJSCAD video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overview Columns -->
+  <div class="columns is-multiline mb-6">
+    <div class="column is-6">
+      <div class="card concept-card-blue">
+        <header class="card-header bg-accent-dark">
+          <p class="card-header-title has-text-white">
+            <span class="icon mr-2"><i class="fa fa-code"></i></span>
+            Why Code-Based CAD?
+          </p>
+        </header>
         <div class="card-content">
-            <div class="content-title-group mb-4">
-                <h2 class="title is-3">Video Introduction</h2>
-            </div>
-            <div class="video-frame">
-                <iframe src="https://www.youtube.com/embed/T9IfF_1Y4z8" title="GotSTL OpenJSCAD video"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                </iframe>
-            </div>
-        </div>
-    </div>
-
-    <!-- Overview Columns -->
-    <div class="columns is-multiline mb-6">
-        <div class="column is-6">
-            <div class="card concept-card-blue">
-                <header class="card-header bg-accent-dark">
-                    <p class="card-header-title has-text-white">
-                        <span class="icon mr-2"><i class="fa fa-code"></i></span>
-                        Why Code-Based CAD?
-                    </p>
-                </header>
-                <div class="card-content">
-                    <div class="content">
-                        <p>
-                            Traditional CAD systems rely on point-and-click graphical interfaces. While intuitive, they
-                            make modifications slow and repetitive.
-                        </p>
-                        <p>
-                            <strong>OpenJSCAD</strong> treats 3D models as code. By defining parameters (width, height,
-                            thickness) up front, you can generate hundreds of variations of a part in milliseconds by
-                            simply adjusting customizer inputs.
-                        </p>
-                        <ul>
-                            <li><strong>Infinite Reusability:</strong> Create design templates once and adjust them
-                                forever.</li>
-                            <li><strong>Version Control:</strong> Track changes to your 3D models using Git, just like
-                                code.</li>
-                            <li><strong>Browser-Native:</strong> No installation or heavy downloads required; it runs
-                                locally in your browser.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="column is-6">
-            <div class="card concept-card-dark">
-                <header class="card-header bg-primary">
-                    <p class="card-header-title has-text-white">
-                        <span class="icon mr-2"><i class="fa fa-cubes"></i></span>
-                        Core Concepts (CSG)
-                    </p>
-                </header>
-                <div class="card-content">
-                    <div class="content font-sm">
-                        <p>
-                            OpenJSCAD uses <strong>Constructive Solid Geometry (CSG)</strong> to construct complex
-                            structures out of basic shapes:
-                        </p>
-                        <div class="concept-item">
-                            <strong>1. Primitives:</strong> Basic geometric building blocks like <code>cube()</code>,
-                            <code>sphere()</code>, and <code>cylinder()</code>.
-                        </div>
-                        <div class="concept-item">
-                            <strong>2. Transforms:</strong> Operations to position and size shapes:
-                            <code>translate([x,y,z])</code>, <code>rotate([x,y,z])</code>, and
-                            <code>scale([x,y,z])</code>.
-                        </div>
-                        <div class="concept-item">
-                            <strong>3. Booleans:</strong> Combining solids mathematically:
-                            <ul>
-                                <li><code>union()</code> - merge shapes together</li>
-                                <li><code>difference()</code> - subtract shapes from each other</li>
-                                <li><code>intersection()</code> - keep only overlapping parts</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- OpenJSCAD User Guide Summary -->
-    <div class="guide-reference-section mb-6">
-        <div class="content-title-group mb-4">
-            <h2 class="title is-3">OpenJSCAD User Guide</h2>
-            <p class="subtitle is-6">
-                A practical summary of the Wikibooks guide for using OpenJSCAD in the browser, locally, and from
-                scripts.
+          <div class="content">
+            <p>
+              Traditional CAD systems rely on point-and-click graphical interfaces. While intuitive, they
+              make modifications slow and repetitive.
             </p>
-        </div>
-
-        <div class="guide-topic-grid">
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-window-maximize" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">Use It in the Browser</h3>
-                <p>
-                    OpenJSCAD provides a viewer and editor for loading <code>.jscad</code> files, editing scripts, and
-                    previewing models.
-                    It supports browser workflows such as drag-and-drop loading and auto reload while editing files
-                    externally.
-                </p>
-            </div>
-
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-terminal" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">Run It Locally</h3>
-                <p>
-                    Projects can run offline from a local installation or from the command line. The CLI can render
-                    scripts and export common formats,
-                    including STL, AMF, DXF, and converted JSCAD output.
-                </p>
-            </div>
-
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-file-code-o" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">Script Anatomy</h3>
-                <p>
-                    A model starts with <code>main()</code>, which returns one solid or an array of separate solids.
-                    Geometry is built with JavaScript
-                    functions, so reusable helpers and parameter-driven designs fit naturally.
-                </p>
-            </div>
-
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-cube" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">3D Modeling Tools</h3>
-                <p>
-                    Core solids include boxes, spheres, cylinders, tori, polyhedra, and text. Transformations such as
-                    scale, rotate, translate,
-                    mirror, center, union, intersection, and difference shape those primitives into printable parts.
-                </p>
-            </div>
-
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-object-group" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">2D to 3D Workflows</h3>
-                <p>
-                    Circles, rectangles, polygons, and paths can be transformed in 2D, then converted into solid
-                    geometry with linear,
-                    rectangular, or rotational extrusion.
-                </p>
-            </div>
-
-            <div class="guide-topic-card">
-                <div class="guide-topic-icon"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
-                <h3 class="title is-5 mb-2">Larger Projects</h3>
-                <p>
-                    Bigger designs can be split across files, organized as project folders, and built with reusable
-                    modules. That makes scripted CAD
-                    easier to maintain as models grow beyond a single file.
-                </p>
-            </div>
-        </div>
-
-        <div class="guide-reference-footer">
-            <a href="https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#OpenJSCAD_Programming_Guide" target="_blank"
-                class="has-text-weight-bold">
-                <span class="icon is-small mr-1"><i class="fa fa-book" aria-hidden="true"></i></span>
-                <span>Read the full OpenJSCAD Wikibooks guide</span>
-            </a>
-        </div>
+            <p>
+              <strong>OpenJSCAD</strong> treats 3D models as code. By defining parameters (width, height,
+              thickness) up front, you can generate hundreds of variations of a part in milliseconds by
+              simply adjusting customizer inputs.
+            </p>
+            <ul>
+              <li><strong>Infinite Reusability:</strong> Create design templates once and adjust them
+            forever.</li>
+            <li><strong>Version Control:</strong> Track changes to your 3D models using Git, just like
+          code.</li>
+          <li><strong>Browser-Native:</strong> No installation or heavy downloads required; it runs
+        locally in your browser.</li>
+      </ul>
     </div>
+  </div>
+</div>
+</div>
 
-    <!-- Primitive Renderings -->
-    <div class="content-title-group mb-5">
-        <h2 class="title is-3">Primitive Renderings</h2>
+<div class="column is-6">
+  <div class="card concept-card-dark">
+    <header class="card-header bg-primary">
+      <p class="card-header-title has-text-white">
+        <span class="icon mr-2"><i class="fa fa-cubes"></i></span>
+        Core Concepts (CSG)
+      </p>
+    </header>
+    <div class="card-content">
+      <div class="content font-sm">
+        <p>
+          OpenJSCAD uses <strong>Constructive Solid Geometry (CSG)</strong> to construct complex
+          structures out of basic shapes:
+        </p>
+        <div class="concept-item">
+          <strong>1. Primitives:</strong> Basic geometric building blocks like <code>cube()</code>,
+          <code>sphere()</code>, and <code>cylinder()</code>.
+        </div>
+        <div class="concept-item">
+          <strong>2. Transforms:</strong> Operations to position and size shapes:
+          <code>translate([x,y,z])</code>, <code>rotate([x,y,z])</code>, and
+          <code>scale([x,y,z])</code>.
+        </div>
+        <div class="concept-item">
+          <strong>3. Booleans:</strong> Combining solids mathematically:
+          <ul>
+            <li><code>union()</code> - merge shapes together</li>
+            <li><code>difference()</code> - subtract shapes from each other</li>
+            <li><code>intersection()</code> - keep only overlapping parts</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  </div>
+</div>
+</div>
 
-    <div class="primitive-grid mb-6">
-        <div class="primitive-card">
-            <div class="primitive-rendering">
-                <svg viewBox="0 0 180 140" role="img" aria-label="Cube primitive rendering">
-                    <defs>
-                        <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#93c5fd" />
-                            <stop offset="100%" stop-color="#3b82f6" />
-                        </linearGradient>
-                        <linearGradient id="cubeSide" x1="0" y1="0" x2="1" y2="1">
-                            <stop offset="0%" stop-color="#1d4ed8" />
-                            <stop offset="100%" stop-color="#1e3a8a" />
-                        </linearGradient>
-                    </defs>
-                    <polygon points="50,45 95,20 140,45 95,70" fill="url(#cubeTop)" />
-                    <polygon points="50,45 95,70 95,120 50,95" fill="#2563eb" />
-                    <polygon points="95,70 140,45 140,95 95,120" fill="url(#cubeSide)" />
-                </svg>
-            </div>
-            <h3 class="title is-5 mb-2">Cube</h3>
-            <p><code>cube()</code> creates boxes, plates, brackets, and other rectangular solids.</p>
-        </div>
-
-        <div class="primitive-card">
-            <div class="primitive-rendering">
-                <svg viewBox="0 0 180 140" role="img" aria-label="Sphere primitive rendering">
-                    <defs>
-                        <radialGradient id="sphereShade" cx="38%" cy="30%" r="68%">
-                            <stop offset="0%" stop-color="#bfdbfe" />
-                            <stop offset="45%" stop-color="#3b82f6" />
-                            <stop offset="100%" stop-color="#1e3a8a" />
-                        </radialGradient>
-                    </defs>
-                    <circle cx="90" cy="70" r="48" fill="url(#sphereShade)" />
-                    <ellipse cx="90" cy="96" rx="38" ry="8" fill="#0f172a" opacity="0.18" />
-                </svg>
-            </div>
-            <h3 class="title is-5 mb-2">Sphere</h3>
-            <p><code>sphere()</code> builds rounded caps, ball joints, knobs, and smooth surfaces.</p>
-        </div>
-
-        <div class="primitive-card">
-            <div class="primitive-rendering">
-                <svg viewBox="0 0 180 140" role="img" aria-label="Cylinder primitive rendering">
-                    <defs>
-                        <linearGradient id="cylinderBody" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="#1e40af" />
-                            <stop offset="50%" stop-color="#60a5fa" />
-                            <stop offset="100%" stop-color="#1d4ed8" />
-                        </linearGradient>
-                    </defs>
-                    <rect x="48" y="38" width="84" height="64" fill="url(#cylinderBody)" />
-                    <ellipse cx="90" cy="38" rx="42" ry="16" fill="#93c5fd" />
-                    <path d="M48 102 C48 110 132 110 132 102" fill="#1d4ed8" />
-                    <ellipse cx="90" cy="102" rx="42" ry="16" fill="#1e3a8a" opacity="0.35" />
-                </svg>
-            </div>
-            <h3 class="title is-5 mb-2">Cylinder</h3>
-            <p><code>cylinder()</code> is used for holes, posts, bushings, shafts, and round bosses.</p>
-        </div>
-
-        <div class="primitive-card">
-            <div class="primitive-rendering">
-                <svg viewBox="0 0 180 140" role="img" aria-label="Torus primitive rendering">
-                    <defs>
-                        <radialGradient id="torusShade" cx="42%" cy="30%" r="70%">
-                            <stop offset="0%" stop-color="#bfdbfe" />
-                            <stop offset="52%" stop-color="#3b82f6" />
-                            <stop offset="100%" stop-color="#1e3a8a" />
-                        </radialGradient>
-                    </defs>
-                    <ellipse cx="90" cy="70" rx="58" ry="40" fill="url(#torusShade)" />
-                    <ellipse cx="90" cy="70" rx="28" ry="18" fill="#f8fafc" />
-                    <path d="M62 70 C62 55 118 55 118 70" fill="none" stroke="#1e3a8a" stroke-width="4"
-                        opacity="0.35" />
-                </svg>
-            </div>
-            <h3 class="title is-5 mb-2">Torus</h3>
-            <p><code>torus()</code> creates rings, gaskets, tire-like forms, and rounded loops.</p>
-        </div>
-    </div>
-
-    <!-- Section Title -->
-    <div class="content-title-group mb-4">
-        <h2 class="title is-3">OpenJSCAD Modeling Examples</h2>
-    </div>
-
-    <p class="subtitle is-6 mb-5">
-        Short, classic examples that open directly in the editor for hands-on exploration.
+<!-- OpenJSCAD User Guide Summary -->
+<div class="guide-reference-section mb-6">
+  <div class="content-title-group mb-4">
+    <h2 class="title is-3">OpenJSCAD User Guide</h2>
+    <p class="subtitle is-6">
+      A practical summary of the Wikibooks guide for using OpenJSCAD in the browser, locally, and from
+      scripts.
     </p>
+  </div>
 
-    <!-- Examples Grid -->
-    <div class="columns is-multiline modeling-examples">
-        <div *ngFor="let example of examples" class="column is-12 mb-5">
-            <div class="card code-card">
-                <div class="card-image">
-                    <figure class="image is-4by3">
-                        <img [src]="example.image" [alt]="example.title" class="example-preview-img">
-                    </figure>
-                </div>
-                <div class="card-content-header">
-                    <span class="tag is-primary is-light mb-2">{{ example.tag }}</span>
-                    <h3 class="title is-4 mb-2">{{ example.title }}</h3>
-                    <p class="has-text-grey-darker mb-3">{{ example.description }}</p>
-                    <a class="button is-primary is-small"
-                        (click)="openInEditor(example.id, example.tag, example.title)">
-                        <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
-                        <span>Open in editor</span>
-                    </a>
-                </div>
-            </div>
-        </div>
+  <div class="guide-topic-grid">
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-window-maximize" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">Use It in the Browser</h3>
+      <p>
+        OpenJSCAD provides a viewer and editor for loading <code>.jscad</code> files, editing scripts, and
+        previewing models.
+        It supports browser workflows such as drag-and-drop loading and auto reload while editing files
+        externally.
+      </p>
     </div>
 
-    <!-- Resources Section -->
-    <div class="box mt-6 is-light-grey">
-        <h3 class="title is-4 mb-3">Useful Resources</h3>
-        <div class="columns is-multiline">
-            <div *ngFor="let resource of resources" class="column is-3">
-                <div class="resource-link">
-                    <a [href]="resource.url" target="_blank" class="has-text-weight-bold">
-                        <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
-                        <span>{{ resource.name }}</span>
-                    </a>
-                    <p class="is-size-7 has-text-grey-dark mt-1">{{ resource.description }}</p>
-                </div>
-            </div>
-        </div>
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-terminal" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">Run It Locally</h3>
+      <p>
+        Projects can run offline from a local installation or from the command line. The CLI can render
+        scripts and export common formats,
+        including STL, AMF, DXF, and converted JSCAD output.
+      </p>
     </div>
+
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-file-code-o" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">Script Anatomy</h3>
+      <p>
+        A model starts with <code>main()</code>, which returns one solid or an array of separate solids.
+        Geometry is built with JavaScript
+        functions, so reusable helpers and parameter-driven designs fit naturally.
+      </p>
+    </div>
+
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-cube" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">3D Modeling Tools</h3>
+      <p>
+        Core solids include boxes, spheres, cylinders, tori, polyhedra, and text. Transformations such as
+        scale, rotate, translate,
+        mirror, center, union, intersection, and difference shape those primitives into printable parts.
+      </p>
+    </div>
+
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-object-group" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">2D to 3D Workflows</h3>
+      <p>
+        Circles, rectangles, polygons, and paths can be transformed in 2D, then converted into solid
+        geometry with linear,
+        rectangular, or rotational extrusion.
+      </p>
+    </div>
+
+    <div class="guide-topic-card">
+      <div class="guide-topic-icon"><i class="fa fa-folder-open-o" aria-hidden="true"></i></div>
+      <h3 class="title is-5 mb-2">Larger Projects</h3>
+      <p>
+        Bigger designs can be split across files, organized as project folders, and built with reusable
+        modules. That makes scripted CAD
+        easier to maintain as models grow beyond a single file.
+      </p>
+    </div>
+  </div>
+
+  <div class="guide-reference-footer">
+    <a href="https://en.wikibooks.org/wiki/OpenJSCAD_User_Guide#OpenJSCAD_Programming_Guide" target="_blank"
+      class="has-text-weight-bold">
+      <span class="icon is-small mr-1"><i class="fa fa-book" aria-hidden="true"></i></span>
+      <span>Read the full OpenJSCAD Wikibooks guide</span>
+    </a>
+  </div>
+</div>
+
+<!-- Primitive Renderings -->
+<div class="content-title-group mb-5">
+  <h2 class="title is-3">Primitive Renderings</h2>
+</div>
+
+<div class="primitive-grid mb-6">
+  <div class="primitive-card">
+    <div class="primitive-rendering">
+      <svg viewBox="0 0 180 140" role="img" aria-label="Cube primitive rendering">
+        <defs>
+          <linearGradient id="cubeTop" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#93c5fd" />
+            <stop offset="100%" stop-color="#3b82f6" />
+          </linearGradient>
+          <linearGradient id="cubeSide" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1d4ed8" />
+            <stop offset="100%" stop-color="#1e3a8a" />
+          </linearGradient>
+        </defs>
+        <polygon points="50,45 95,20 140,45 95,70" fill="url(#cubeTop)" />
+        <polygon points="50,45 95,70 95,120 50,95" fill="#2563eb" />
+        <polygon points="95,70 140,45 140,95 95,120" fill="url(#cubeSide)" />
+      </svg>
+    </div>
+    <h3 class="title is-5 mb-2">Cube</h3>
+    <p><code>cube()</code> creates boxes, plates, brackets, and other rectangular solids.</p>
+  </div>
+
+  <div class="primitive-card">
+    <div class="primitive-rendering">
+      <svg viewBox="0 0 180 140" role="img" aria-label="Sphere primitive rendering">
+        <defs>
+          <radialGradient id="sphereShade" cx="38%" cy="30%" r="68%">
+            <stop offset="0%" stop-color="#bfdbfe" />
+            <stop offset="45%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#1e3a8a" />
+          </radialGradient>
+        </defs>
+        <circle cx="90" cy="70" r="48" fill="url(#sphereShade)" />
+        <ellipse cx="90" cy="96" rx="38" ry="8" fill="#0f172a" opacity="0.18" />
+      </svg>
+    </div>
+    <h3 class="title is-5 mb-2">Sphere</h3>
+    <p><code>sphere()</code> builds rounded caps, ball joints, knobs, and smooth surfaces.</p>
+  </div>
+
+  <div class="primitive-card">
+    <div class="primitive-rendering">
+      <svg viewBox="0 0 180 140" role="img" aria-label="Cylinder primitive rendering">
+        <defs>
+          <linearGradient id="cylinderBody" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#1e40af" />
+            <stop offset="50%" stop-color="#60a5fa" />
+            <stop offset="100%" stop-color="#1d4ed8" />
+          </linearGradient>
+        </defs>
+        <rect x="48" y="38" width="84" height="64" fill="url(#cylinderBody)" />
+        <ellipse cx="90" cy="38" rx="42" ry="16" fill="#93c5fd" />
+        <path d="M48 102 C48 110 132 110 132 102" fill="#1d4ed8" />
+        <ellipse cx="90" cy="102" rx="42" ry="16" fill="#1e3a8a" opacity="0.35" />
+      </svg>
+    </div>
+    <h3 class="title is-5 mb-2">Cylinder</h3>
+    <p><code>cylinder()</code> is used for holes, posts, bushings, shafts, and round bosses.</p>
+  </div>
+
+  <div class="primitive-card">
+    <div class="primitive-rendering">
+      <svg viewBox="0 0 180 140" role="img" aria-label="Torus primitive rendering">
+        <defs>
+          <radialGradient id="torusShade" cx="42%" cy="30%" r="70%">
+            <stop offset="0%" stop-color="#bfdbfe" />
+            <stop offset="52%" stop-color="#3b82f6" />
+            <stop offset="100%" stop-color="#1e3a8a" />
+          </radialGradient>
+        </defs>
+        <ellipse cx="90" cy="70" rx="58" ry="40" fill="url(#torusShade)" />
+        <ellipse cx="90" cy="70" rx="28" ry="18" fill="#f8fafc" />
+        <path d="M62 70 C62 55 118 55 118 70" fill="none" stroke="#1e3a8a" stroke-width="4"
+          opacity="0.35" />
+      </svg>
+    </div>
+    <h3 class="title is-5 mb-2">Torus</h3>
+    <p><code>torus()</code> creates rings, gaskets, tire-like forms, and rounded loops.</p>
+  </div>
+</div>
+
+<!-- Section Title -->
+<div class="content-title-group mb-4">
+  <h2 class="title is-3">OpenJSCAD Modeling Examples</h2>
+</div>
+
+<p class="subtitle is-6 mb-5">
+  Short, classic examples that open directly in the editor for hands-on exploration.
+</p>
+
+<!-- Examples Grid -->
+<div class="columns is-multiline modeling-examples">
+  @for (example of examples; track example) {
+    <div class="column is-12 mb-5">
+      <div class="card code-card">
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img [src]="example.image" [alt]="example.title" class="example-preview-img">
+          </figure>
+        </div>
+        <div class="card-content-header">
+          <span class="tag is-primary is-light mb-2">{{ example.tag }}</span>
+          <h3 class="title is-4 mb-2">{{ example.title }}</h3>
+          <p class="has-text-grey-darker mb-3">{{ example.description }}</p>
+          <a class="button is-primary is-small"
+            (click)="openInEditor(example.id, example.tag, example.title)">
+            <span class="icon is-small"><i class="fa fa-pencil" aria-hidden="true"></i></span>
+            <span>Open in editor</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  }
+</div>
+
+<!-- Resources Section -->
+<div class="box mt-6 is-light-grey">
+  <h3 class="title is-4 mb-3">Useful Resources</h3>
+  <div class="columns is-multiline">
+    @for (resource of resources; track resource) {
+      <div class="column is-3">
+        <div class="resource-link">
+          <a [href]="resource.url" target="_blank" class="has-text-weight-bold">
+            <span class="icon is-small mr-1"><i class="fa fa-link" aria-hidden="true"></i></span>
+            <span>{{ resource.name }}</span>
+          </a>
+          <p class="is-size-7 has-text-grey-dark mt-1">{{ resource.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>
 </div>

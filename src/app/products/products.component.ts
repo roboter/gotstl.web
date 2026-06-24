@@ -1,17 +1,27 @@
+import { AsyncPipe } from '@angular/common';
+import { ProductListComponent } from './product-list.component';
+import { ProductDetailComponent } from './product-detail.component';
+import { ModalComponent } from '../shared/modal.component';
+import { ListHeaderComponent } from '../shared/list-header.component';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../core';
 import { ProductService, ProductsService } from './product.service';
 
 @Component({
+  standalone: true,
+  imports: [AsyncPipe, CommonModule, RouterModule, ProductListComponent, ProductDetailComponent, ModalComponent, ListHeaderComponent],
+
   selector: 'app-products',
   templateUrl: 'product.component.html',
 })
 export class ProductsComponent implements OnInit {
-  selected: Product;
+  selected!: Product | null;
   products$: Observable<Product[]>;
   message = '?';
-  productToDelete: Product;
+  productToDelete!: Product | null;
   showModal = false;
 
   constructor(private productService: ProductsService) {
