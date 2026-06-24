@@ -111,8 +111,3 @@ Deployment is fully automated using **GitHub Actions** and **Azure Static Web Ap
 For configuration details, refer to [.github/workflows/azure-static-web-apps-orange-glacier-0bd4f4c03.yml](.github/workflows/azure-static-web-apps-orange-glacier-0bd4f4c03.yml).
 
 ---
-
-## ⚠️ Known Limitations
-
-- **DNS Redirect:** Due to Azure Static Web Apps naked domain configuration limitations, users must access the site via the full `www` subdomain: [http://www.gotstl.com](http://www.gotstl.com).
-

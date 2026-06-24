@@ -14,3 +14,12 @@ jscad live preview plugin gor VScode
 https://github.com/danmarshall/jscad-now
 
 took styles from https://openjscad.xyz/#
+
+
+take all possible values from jscad files to product list for all files
+// title      : Celtic Knot Ring
+// author     : Joost Nieuwenhuijse
+// license    : MIT License
+// description: a Celtic knot ring
+// file       : celtic-knot-ring.jscad
+// tags       : Catmull Spline
