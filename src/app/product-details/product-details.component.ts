@@ -63,6 +63,9 @@ export class ProductDetailsComponent implements OnInit {
       drawLines: true,
       drawFaces: true,
       viewer: {
+        camera: {
+          clip: { min: 0.1, max: 100000 }
+        },
         glOptions: {
           preserveDrawingBuffer: true,
         }
@@ -122,16 +125,35 @@ export class ProductDetailsComponent implements OnInit {
                 const cy = (minY + maxY) / 2;
                 const cz = (minZ + maxZ) / 2;
 
+                // Default camera angles
+                const ax = -60 * Math.PI / 180;
+                const az = -45 * Math.PI / 180;
+
+                // Project center into camera's local coordinate system (R = Rx * Rz)
+                const x1 = cx * Math.cos(az) - cy * Math.sin(az);
+                const y1 = cx * Math.sin(az) + cy * Math.cos(az);
+                const z1 = cz;
+
+                const x2 = x1;
+                const y2 = y1 * Math.cos(ax) - z1 * Math.sin(ax);
+
                 // Position camera targeting the center of the object
-                viewer.viewpointX = cx;
-                viewer.viewpointY = cy;
+                viewer.viewpointX = -x2;
+                viewer.viewpointY = -y2;
                 
                 // Read zoomScale parameter (default: 1.0)
                 const zoomScale = parseFloat(this.activatedRoute.snapshot.queryParams.zoomScale || '1.0');
+                const fitToView = this.activatedRoute.snapshot.queryParams.fitToView === 'true';
                 
-                // Adjust zoom distance dynamically based on diagonal and dimensions
-                // Safe fit for tall objects: diagonal * 3.2 or maxDim * 4.5, minimum fallback of 90
-                viewer.viewpointZ = Math.max(diagonal * 3.2, maxDim * 4.5, 90) / zoomScale;
+                if (fitToView) {
+                  // FOV is 45 degrees, which is Math.PI/4 radians. 
+                  // Math.sin(22.5 deg) is ~0.38268. We'll use 1.35 * diagonal to nicely fit the sphere.
+                  viewer.viewpointZ = (diagonal * 1.35) / zoomScale;
+                } else {
+                  // Adjust zoom distance dynamically based on diagonal and dimensions
+                  // Safe fit for tall objects: diagonal * 3.2 or maxDim * 4.5, minimum fallback of 90
+                  viewer.viewpointZ = Math.max(diagonal * 3.2, maxDim * 4.5, 90) / zoomScale;
+                }
 
                 viewer.angleX = -60;
                 viewer.angleY = 0;

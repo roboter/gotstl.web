@@ -135,11 +135,12 @@ Options:
   --static             Force rendering using the built static files under dist/gotstl.
   --verbose            Print verbose browser logs and network requests.
   --zoom-scale <val>   Add a zoom scaling factor to screenshots (e.g. 0.5 to render 50% smaller).
+  --fit-to-view        Mathematically calculate the exact camera distance to fit the whole object into the frustum.
 
 Examples:
   node scripts/generate-screenshots.js
   node scripts/generate-screenshots.js --force
-  node scripts/generate-screenshots.js example001.jscad --static --zoom-scale 0.5
+  node scripts/generate-screenshots.js example001.jscad --fit-to-view
     `);
     process.exit(0);
   }
@@ -147,6 +148,7 @@ Examples:
   const force = args.includes('--force');
   const forceStatic = args.includes('--static');
   const verbose = args.includes('--verbose');
+  const fitToView = args.includes('--fit-to-view');
 
   // Parse --zoom-scale value (default: 1.0)
   let zoomScale = 1.0;
@@ -292,7 +294,10 @@ Examples:
       // Construct URL to open the specific jscad file
       // We pass the file path relative to assets and the zoomScale parameter
       const fileParam = `assets/products/${relativePath.replace(/\\/g, '/')}`;
-      const url = `${baseUrl}/product/0?file=${encodeURIComponent(fileParam)}&screenshot=true&zoomScale=${zoomScale}`;
+      let url = `${baseUrl}/product/0?file=${encodeURIComponent(fileParam)}&screenshot=true&zoomScale=${zoomScale}`;
+      if (fitToView) {
+        url += '&fitToView=true';
+      }
 
       try {
         await page.goto(url, { waitUntil: 'networkidle0', timeout: 60000 });
