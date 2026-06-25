@@ -2,7 +2,7 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Product } from '../core';
 import { ProductService } from '../products/product.service';
 
@@ -10,6 +10,9 @@ import { ProductService } from '../products/product.service';
 import * as gProcessor from '@jwc/jscad-web';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
+import * as ace from 'ace-builds';
+import 'ace-builds/src-noconflict/mode-javascript';
+import 'ace-builds/src-noconflict/theme-chrome';
 
 @Component({
   standalone: true,
@@ -19,11 +22,12 @@ import { ActivatedRoute, Params } from '@angular/router';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, AfterViewInit {
   editingProduct!: Product;
   public outputFile!: string;
   public gProcessor: any = null;
   takeScreenshotAfterRender = false;
+  private editor!: ace.Ace.Editor;
 
   constructor(
     private http: HttpClient,
@@ -194,6 +198,9 @@ export class ProductDetailsComponent implements OnInit {
             this.editingProduct = product;
 
             this.editingProduct.code = res;
+            if (this.editor) {
+              this.editor.setValue(res, -1);
+            }
             this.onUpdate();
           });
       };
@@ -213,6 +220,30 @@ export class ProductDetailsComponent implements OnInit {
 
       this.productService.getById(params.id).subscribe(loadDesign);
     });
+  }
+
+  ngAfterViewInit(): void {
+    const editorElement = document.getElementById('code');
+    if (editorElement) {
+      this.editor = ace.edit(editorElement);
+      this.editor.setTheme('ace/theme/chrome');
+      this.editor.session.setMode('ace/mode/javascript');
+      this.editor.setOptions({
+        fontSize: '0.9em',
+        showPrintMargin: false,
+      });
+
+      this.editor.on('change', () => {
+        if (this.editingProduct) {
+          this.editingProduct.code = this.editor.getValue();
+        }
+      });
+      
+      // If code was already loaded before AfterViewInit
+      if (this.editingProduct && this.editingProduct.code) {
+        this.editor.setValue(this.editingProduct.code, -1);
+      }
+    }
   }
 
   onUpdate() {
