@@ -216,23 +216,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   onUpdate() {
-    let jscadCode = this.editingProduct.code;
-    
-    // Polyfill to make OpenJSCAD's linear_extrude behave more like OpenSCAD by 
-    // dynamically calculating slices based on twist if slices is not explicitly provided.
-    const polyfill = `
-      if (typeof linear_extrude !== 'undefined' && typeof _original_linear_extrude === 'undefined') {
-        var _original_linear_extrude = linear_extrude;
-        linear_extrude = function(params, baseShape) {
-          if (params && typeof params === 'object' && params.twist !== undefined && params.slices === undefined) {
-            params.slices = Math.max(10, Math.ceil(Math.abs(params.twist) / 5));
-          }
-          return _original_linear_extrude(params, baseShape);
-        };
-      }
-    `;
-
-    this.gProcessor!.setJsCad(polyfill + jscadCode);
+    this.gProcessor!.setJsCad(this.editingProduct.code);
     this.gProcessor!.rebuildSolids();
     setTimeout(() => {
       if (
