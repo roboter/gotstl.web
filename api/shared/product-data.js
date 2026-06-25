@@ -718,37 +718,9 @@ const data = {
                 "3d printing"
             ],
             "id": 1090
-        },
-        {
-            "file": "assets/products/include-subfolder/main.jscad",
-            "image": "assets/products/include-subfolder/main.png",
-            "name": "main",
-            "id": 1100
-        },
-        {
-            "file": "assets/products/include-subfolder/sub/subModule.jscad",
-            "image": "assets/products/include-subfolder/sub/subModule.png",
-            "name": "subModule",
-            "id": 1110
-        },
-        {
-            "file": "assets/products/include-test/a01.jscad",
-            "image": "assets/products/include-test/a01.png",
-            "name": "a01",
-            "id": 1120
-        },
-        {
-            "file": "assets/products/include-test/a02.jscad",
-            "image": "assets/products/include-test/a02.png",
-            "name": "a02",
-            "id": 1130
-        },
-        {
-            "file": "assets/products/include-test/main.jscad",
-            "image": "assets/products/include-test/main.png",
-            "name": "main",
-            "id": 1140
         }
+
+
     ]
 };
 
