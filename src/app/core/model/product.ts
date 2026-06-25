@@ -6,4 +6,7 @@ export class Product {
   file!: string;
   code!: string;
   url!: string;
+  author?: string;
+  license?: string;
+  tags?: string[];
 }

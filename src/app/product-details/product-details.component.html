@@ -1,9 +1,31 @@
 <div class="card edit-detail">
   @if (editingProduct) {
     <header class="card-header">
-      <p class="card-header-title">
-        {{ editingProduct.name }}
-      </p>
+      <div class="card-header-title is-flex is-flex-direction-column is-align-items-flex-start">
+        <p class="is-size-4 mb-2">{{ editingProduct.name }}</p>
+        <p class="subtitle is-6 mb-2">{{ editingProduct.description }}</p>
+        <div class="is-flex is-flex-wrap-wrap is-align-items-center mb-1 gap-3">
+          @if (editingProduct.author) {
+            <span class="is-size-7 has-text-grey mr-3">
+              <span class="icon is-small"><i class="fas fa-user"></i></span>
+              {{ editingProduct.author }}
+            </span>
+          }
+          @if (editingProduct.license) {
+            <span class="is-size-7 has-text-grey mr-3">
+              <span class="icon is-small"><i class="fas fa-balance-scale"></i></span>
+              {{ editingProduct.license }}
+            </span>
+          }
+        </div>
+        @if (editingProduct.tags && editingProduct.tags.length) {
+          <div class="tags mt-2 mb-0">
+            @for (tag of editingProduct.tags; track tag) {
+              <span class="tag is-light is-info">{{ tag }}</span>
+            }
+          </div>
+        }
+      </div>
     </header>
   }
   <div class="card-content">
